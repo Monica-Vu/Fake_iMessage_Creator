@@ -8,7 +8,8 @@ type ChatProps = {
 const Chat: React.FC<ChatProps> = ({ chatRef }) => {
     return (
     <div className="capture-element" ref={chatRef}> 
-    <SpeechBubble colour="#4D95F7" text="Hello"/>
+    <SpeechBubble className="sender-speech-bubble" text="Hello"/>
+    <SpeechBubble className="receiver-speech-bubble" text="Hi there!"/>
     </div>
     )
 

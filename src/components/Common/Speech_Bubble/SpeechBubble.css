@@ -1,13 +1,33 @@
-.speech-bubble-container {
-   padding: 5px 10px 0px 10px;
-}
-.speech-bubble {
+:root {
+    --speech-bubble-padding: 5px 10px 0px 10px;
+    --speech-bubble-width: 181px;
+    --speech-bubble-border-radius: 20px;
+    --speech-bubble-padding-text: 10px 20px;
+    --speech-bubble-text-align: left;
+  }
+  
+  .speech-bubble-container {
+    padding: var(--speech-bubble-padding);
+  }
+  
+  .sender-speech-bubble {
     background-color: #4D95F7;
-    width: 181px;
-    border-radius: 20px;
-    padding: 10px 20px;
+    width: var(--speech-bubble-width);
+    border-radius: var(--speech-bubble-border-radius);
+    padding: var(--speech-bubble-padding-text);
     color: #fff;
-    text-align: left;
+    text-align: var(--speech-bubble-text-align);
+    margin: var(--speech-bubble-margin);
     margin-left: auto; /* solution to make the speech bubble always right */
-    
-} 
+  }
+  
+  .receiver-speech-bubble {
+    background-color: #E5E4E9;
+    width: var(--speech-bubble-width);
+    border-radius: var(--speech-bubble-border-radius);
+    padding: var(--speech-bubble-padding-text);
+    color: #000;
+    text-align: var(--speech-bubble-text-align);
+    margin: var(--speech-bubble-margin);
+  }
+  

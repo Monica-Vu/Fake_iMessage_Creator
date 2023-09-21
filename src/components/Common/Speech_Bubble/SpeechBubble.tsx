@@ -2,16 +2,16 @@ import React from "react";
 import "./SpeechBubble.css";
 
 interface SpeechBubbleProps {
-  colour?: string;
-  hasTail?: boolean;
   text: string;
+  className: string;
+  hasTail?: boolean;
 }
 
-const SpeechBubble: React.FC<SpeechBubbleProps> = ({ colour, text }) => {
+const SpeechBubble: React.FC<SpeechBubbleProps> = ({ className, text }) => {
   return (
     <>
       <div className="speech-bubble-container">
-        <div className="speech-bubble" style={{ backgroundColor: colour }}>
+        <div className={`my-element ${className}`}>
           {text}
         </div>
       </div>
