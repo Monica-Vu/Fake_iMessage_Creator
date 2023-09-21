@@ -1,33 +1,39 @@
 :root {
-    --speech-bubble-padding: 5px 10px 0px 10px;
-    --speech-bubble-width: 181px;
-    --speech-bubble-border-radius: 20px;
-    --speech-bubble-padding-text: 10px 20px;
-    --speech-bubble-text-align: left;
-  }
-  
-  .speech-bubble-container {
-    padding: var(--speech-bubble-padding);
-  }
-  
-  .sender-speech-bubble {
-    background-color: #4D95F7;
-    width: var(--speech-bubble-width);
-    border-radius: var(--speech-bubble-border-radius);
-    padding: var(--speech-bubble-padding-text);
-    color: #fff;
-    text-align: var(--speech-bubble-text-align);
-    margin: var(--speech-bubble-margin);
-    margin-left: auto; /* solution to make the speech bubble always right */
-  }
-  
-  .receiver-speech-bubble {
-    background-color: #E5E4E9;
-    width: var(--speech-bubble-width);
-    border-radius: var(--speech-bubble-border-radius);
-    padding: var(--speech-bubble-padding-text);
-    color: #000;
-    text-align: var(--speech-bubble-text-align);
-    margin: var(--speech-bubble-margin);
-  }
-  
+  --speech-bubble-padding: 5px 10px 0px 10px;
+  --speech-bubble-width: 181px;
+  --speech-bubble-border-radius: 20px;
+  --speech-bubble-padding-text: 10px 20px;
+  --speech-bubble-text-align: left;
+}
+
+.speech-bubble-container {
+  padding: var(--speech-bubble-padding);
+}
+
+.sender-speech-bubble {
+  background-color: #4d95f7;
+  width: var(--speech-bubble-width);
+  border-radius: var(--speech-bubble-border-radius);
+  padding: var(--speech-bubble-padding-text);
+  color: #fff;
+  text-align: var(--speech-bubble-text-align);
+  margin: var(--speech-bubble-margin);
+  margin-left: auto; /* solution to make the speech bubble always right */
+}
+
+.receiver-speech-bubble {
+  background-color: #e5e4e9;
+  width: var(--speech-bubble-width);
+  border-radius: var(--speech-bubble-border-radius);
+  padding: var(--speech-bubble-padding-text);
+  color: #000;
+  text-align: var(--speech-bubble-text-align);
+  margin: var(--speech-bubble-margin);
+}
+
+.tail-image {
+  margin-left: auto;
+  position: relative;
+  top: -10px;
+  right: -170px;
+}
