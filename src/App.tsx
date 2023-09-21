@@ -1,11 +1,9 @@
-import FileUpload from './components/FileUpload/FileUpload'; 
-import Download from './components/DownloadChat/Download'
+import Grid from './components/Grid/Grid';
 
 function App() {
   return (
     <div className="App">
-      <FileUpload />
-      <Download />
+      <Grid /> 
     </div>
   );
 }

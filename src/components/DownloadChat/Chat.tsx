@@ -1,3 +1,4 @@
+import SpeechBubble from '../Common/Speech_Bubble/SpeechBubble';
 import './Chat.css';
 
 type ChatProps = {
@@ -7,7 +8,7 @@ type ChatProps = {
 const Chat: React.FC<ChatProps> = ({ chatRef }) => {
     return (
     <div className="capture-element" ref={chatRef}> 
-    Download this section as a PNG
+    <SpeechBubble colour="#4D95F7" text="Hello"/>
     </div>
     )
 

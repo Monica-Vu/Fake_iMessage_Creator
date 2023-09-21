@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.body {
+  font-family: 'Helvetica', 'Roboto', 'Arial';
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

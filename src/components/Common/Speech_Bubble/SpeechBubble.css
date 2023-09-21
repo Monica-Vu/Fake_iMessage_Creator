@@ -1,0 +1,13 @@
+.speech-bubble-container {
+   padding: 5px 10px 0px 10px;
+}
+.speech-bubble {
+    background-color: #4D95F7;
+    width: 181px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    text-align: left;
+    margin-left: auto; /* solution to make the speech bubble always right */
+    
+} 
