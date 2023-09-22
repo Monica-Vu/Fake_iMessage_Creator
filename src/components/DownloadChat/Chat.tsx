@@ -14,7 +14,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   return (
     <div className="capture-element" ref={chatRef}>
       <SpeechBubble
-        className={SENDER_SPEECH_BUBBLE_CLASS_NAME}
+        sender={true}
         text="Hello <3"
       />
       {/* <SpeechBubble

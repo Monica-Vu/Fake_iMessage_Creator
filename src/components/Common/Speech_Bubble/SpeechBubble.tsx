@@ -1,22 +1,19 @@
 import React from "react";
 import "./SpeechBubble.css";
-import greySpeechBubbleTail from '../../../svgs/grey_speech_bubble_tail.png';
-import blueSpeechBubbleTail from '../../../svgs/blue_speech_bubble.png';
 
 interface SpeechBubbleProps {
   text: string;
-  className: string;
+  sender: boolean;
   hasTail?: boolean;
 }
 
-const SpeechBubble: React.FC<SpeechBubbleProps> = ({ className, text }) => {
+const SpeechBubble: React.FC<SpeechBubbleProps> = ({ sender, text, hasTail }) => {
   return (
     <>
       <div className="speech-bubble-container">
-        <div className={`my-element ${className}`}>
+        <div className="sender-speech-bubble speech-bubble">
           {text}
         </div>
-        <img src={blueSpeechBubbleTail} alt="Tail" className="tail-image" />
       </div>
     </>
   );

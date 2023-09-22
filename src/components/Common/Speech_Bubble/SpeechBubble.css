@@ -10,6 +10,17 @@
   padding: var(--speech-bubble-padding);
 }
 
+.speech-bubble {
+  position: relative;
+
+  &:before, &:after {
+    content: "";
+		position: absolute;
+    bottom: 0;
+    height: 25px;
+  }
+}
+
 .sender-speech-bubble {
   background-color: #4d95f7;
   width: var(--speech-bubble-width);
@@ -19,6 +30,20 @@
   text-align: var(--speech-bubble-text-align);
   margin: var(--speech-bubble-margin);
   margin-left: auto; /* solution to make the speech bubble always right */
+
+  &:before {
+		right: -7px;
+    width: 20px;
+    background-color:#4d95f7;
+		border-bottom-left-radius: 16px 14px;
+	}
+
+	&:after {
+		right: -25px;
+    width: 26px;
+    background-color: #fff;
+		border-bottom-left-radius: 10px;
+	}
 }
 
 .receiver-speech-bubble {
@@ -29,11 +54,4 @@
   color: #000;
   text-align: var(--speech-bubble-text-align);
   margin: var(--speech-bubble-margin);
-}
-
-.tail-image {
-  margin-left: auto;
-  position: relative;
-  top: -10px;
-  right: -170px;
 }
