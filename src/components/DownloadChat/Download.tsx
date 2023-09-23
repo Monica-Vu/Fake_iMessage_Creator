@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import html2canvas from "html2canvas";
 import download from "downloadjs";
 import Chat from "./Chat";
+import Button from "../Common/Button/Button";
 
 const CaptureElementAsImage: React.FC = () => {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -21,7 +22,9 @@ const CaptureElementAsImage: React.FC = () => {
   return (
     <div>
       <Chat chatRef={elementRef} />
-      <button onClick={handleCaptureClick}>Capture</button>
+      <Button 
+        text="Capture"
+        onClick={handleCaptureClick}/>
     </div>
   );
 };
