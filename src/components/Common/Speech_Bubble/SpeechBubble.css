@@ -54,4 +54,18 @@
   color: #000;
   text-align: var(--speech-bubble-text-align);
   margin: var(--speech-bubble-margin);
+
+  &:before {
+		left: -7px;
+    width: 20px;
+    background-color:#e5e4e9;
+		border-bottom-right-radius: 16px 14px;
+	}
+
+	&:after {
+		left: -26px;
+    width: 26px;
+    background-color: #fff;
+		border-bottom-right-radius: 10px;
+	}
 }

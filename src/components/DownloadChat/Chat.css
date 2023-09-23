@@ -1,4 +1,6 @@
 .capture-element {
     width: 390px;
     height: 700px;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
