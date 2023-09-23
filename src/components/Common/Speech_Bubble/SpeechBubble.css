@@ -18,7 +18,16 @@
 		position: absolute;
     bottom: 0;
     height: 25px;
-    /* display: none; <-- this would hide the tail. could also do hidden. */
+  }
+}
+
+.speech-bubble.hide-tail {
+  &:before, &:after {
+    content: "";
+		position: absolute;
+    bottom: 0;
+    height: 25px;
+    display: none; /* hide tail */
   }
 }
 
