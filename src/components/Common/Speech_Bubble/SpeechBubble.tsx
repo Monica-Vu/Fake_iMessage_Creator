@@ -7,11 +7,13 @@ interface SpeechBubbleProps {
   hasTail?: boolean;
 }
 
-const SenderSpeechBubble: React.FC<SpeechBubbleProps> = ({ sender, text, hasTail }) => {
+const SpeechBubble: React.FC<SpeechBubbleProps> = ({ sender, text, hasTail }) => {
+  const className = sender ? 'sender-speech-bubble speech-bubble' : 'receiver-speech-bubble speech-bubble'
+  
   return (
     <>
       <div className="speech-bubble-container">
-        <div className="sender-speech-bubble speech-bubble">
+        <div className={className}>
           {text}
         </div>
       </div>
@@ -19,19 +21,4 @@ const SenderSpeechBubble: React.FC<SpeechBubbleProps> = ({ sender, text, hasTail
   );
 };
 
-const ReceiverSpeechBubble: React.FC<SpeechBubbleProps> = ({ sender, text, hasTail }) => {
-  return (
-    <>
-      <div className="speech-bubble-container">
-        <div className="receiver-speech-bubble speech-bubble">
-          {text}
-        </div>
-      </div>
-    </>
-  );
-};
-
-export {
-  SenderSpeechBubble,
-  ReceiverSpeechBubble
-}
+export default SpeechBubble

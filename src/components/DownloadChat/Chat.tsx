@@ -1,4 +1,4 @@
-import { SenderSpeechBubble, ReceiverSpeechBubble } from "../Common/Speech_Bubble/SpeechBubble";
+import SpeechBubble from "../Common/Speech_Bubble/SpeechBubble";
 import "./Chat.css";
 import { LONG_SPEECH_TEXT, SHORT_SPEECH_TEXT, SHORT_SPEECH_TEXT_01 } from "../../constants";
 
@@ -9,9 +9,9 @@ type ChatProps = {
 const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   return (
     <div className="capture-element" ref={chatRef}>
-      <SenderSpeechBubble sender={true} text={SHORT_SPEECH_TEXT} />
-      <ReceiverSpeechBubble sender={false} text={SHORT_SPEECH_TEXT_01} />
-      <SenderSpeechBubble sender={true} text="woah, so cool" />
+      <SpeechBubble sender={true} text={SHORT_SPEECH_TEXT} />
+      <SpeechBubble sender={false} text={SHORT_SPEECH_TEXT_01} />
+      <SpeechBubble sender={true} text="woah, so cool!!" />
     </div>
   );
 };
