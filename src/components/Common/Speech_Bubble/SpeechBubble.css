@@ -1,7 +1,7 @@
 :root {
   --speech-bubble-padding: 5px 10px 0px 10px;
   --speech-bubble-width: 181px;
-  --speech-bubble-border-radius: 20px;
+  --speech-bubble-border-radius: 15px;
   --speech-bubble-padding-text: 10px 20px;
   --speech-bubble-text-align: left;
 }
@@ -39,7 +39,7 @@
 	}
 
 	&:after {
-		right: -25px;
+		right: -26px;
     width: 26px;
     background-color: #fff;
 		border-bottom-left-radius: 10px;
