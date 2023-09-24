@@ -1,11 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import ImageCrop from "./ImageCrop";
-import parkHanbinImage from "../../images/park_hanbin.png";
 import Button from "../Common/Button/Button";
 import ProfilePictureContext, { ProfilePictureType } from "../Common/FileContext/FileContext";
 
 function FileUpload() {
-  const defaultImage = parkHanbinImage;
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const { profilePicture, setProfilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
 
@@ -24,10 +22,7 @@ function FileUpload() {
     <div>
       {profilePicture ? (
         <ImageCrop file={profilePicture} />
-      ) : (
-        <img src={parkHanbinImage} alt="Park Hanbin is a cutie" width="63px" height="63px" />
-      )}
-      <br />
+      ) : (<h6> No Profile Picture </h6>)}
       <Button text="Upload" onClick={handleButtonClick} />
       <input
         type="file"

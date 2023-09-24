@@ -2,7 +2,6 @@ import React from "react";
 import SpeechBubble from "../Common/Speech_Bubble/SpeechBubble";
 import "./Chat.css";
 import {
-  LONG_SPEECH_TEXT,
   SHORT_SPEECH_TEXT,
   SHORT_SPEECH_TEXT_01,
 } from "../../constants";
@@ -10,7 +9,7 @@ import ProfilePictureContext, {
   ProfilePictureType,
 } from "../Common/FileContext/FileContext";
 import ImageCrop from "../FileUpload/ImageCrop";
-import parkHanbinImage from "../../images/park_hanbin.png";
+import defaultImage from "../../images/unknown_person.png";
 
 const speechBubbles = [
   { sender: true, text: SHORT_SPEECH_TEXT },
@@ -26,7 +25,7 @@ type ChatProps = {
 };
 
 const Chat: React.FC<ChatProps> = ({ chatRef }) => {
-  const { profilePicture, setProfilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
+  const { profilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
 
   return (
     <div className="capture-element" ref={chatRef}>
@@ -34,15 +33,13 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         <ImageCrop file={profilePicture} />
       ) : (
         <img
-          src={parkHanbinImage}
-          alt="Park Hanbin is a cutie"
+          src={defaultImage}
+          alt="Unknown Person"
           width="63px"
           height="63px"
+          border-radius="50%"
         />
       )}
-      {/* <SpeechBubble sender={true} text={SHORT_SPEECH_TEXT} />
-      <SpeechBubble sender={false} text={SHORT_SPEECH_TEXT_01} />
-      <SpeechBubble sender={true} text="woah, so cool!!" /> */}
 
       {speechBubbles.map((bubble, index) => {
         const removeTail = () => {

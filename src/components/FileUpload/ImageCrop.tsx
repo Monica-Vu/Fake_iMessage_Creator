@@ -20,11 +20,10 @@ function ImageCrop({ file }: ImageCropProps): JSX.Element {
         {image && (
           <img
             src={image}
-            alt="Cropped iMessage Avatar"
             style={{
               width: "63px",
               height: "63px",
-              borderRadius: "50%",
+              borderRadius: "50%"
             }}
           />
         )}
