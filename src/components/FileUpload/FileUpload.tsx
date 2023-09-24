@@ -25,6 +25,7 @@ function FileUpload() {
         type="file" 
         ref={fileInputRef}
         onChange={handleFileChange} 
+        accept=".png, .jpg, .jpeg, .gif"
         style={{ display: 'none'}}
         />
       {selectedFile && <ImageCrop file={selectedFile} />}

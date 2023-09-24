@@ -9,7 +9,7 @@ import {
 const speechBubbles = [
   { sender: true, text: SHORT_SPEECH_TEXT },
   { sender: false, text: SHORT_SPEECH_TEXT_01 },
-  { sender: true, text: "WOAH! so cool!" },
+  { sender: true, text: "WOAH! so cool! 🫶" },
   { sender: true, text: "WOAH! so cool!!" },
   { sender: false, text: "My boo is amazing" },
   { sender: false, text: "My boo is talented!" },
