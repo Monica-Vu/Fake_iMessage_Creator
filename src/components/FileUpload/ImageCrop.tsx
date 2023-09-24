@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ReactCrop, { Crop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 
 interface ImageCropProps {
@@ -7,13 +6,6 @@ interface ImageCropProps {
 }
 
 function ImageCrop({ file }: ImageCropProps): JSX.Element {
-  const [crop, setCrop] = useState<Crop>({
-    x: 0,
-    y: 0,
-    unit: "px",
-    width: 63,
-    height: 63,
-  });
   const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,16 +15,8 @@ function ImageCrop({ file }: ImageCropProps): JSX.Element {
     }
   }, [file]);
 
-  const handleCropChange = (newCrop: Crop) => {
-    setCrop(newCrop);
-  };
-
   return (
     <div>
-      {image && (
-        <ReactCrop crop={crop} onChange={handleCropChange} />
-      )}
-      <div>
         {image && (
           <img
             src={image}
@@ -44,7 +28,6 @@ function ImageCrop({ file }: ImageCropProps): JSX.Element {
             }}
           />
         )}
-      </div>
     </div>
   );
 }
