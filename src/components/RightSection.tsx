@@ -1,21 +1,41 @@
 import React, { useState } from "react";
 import Button from "./Common/Button/Button";
 import InputField from "./Common/Input_Field/InputField";
+import MessagesContext, { MessagesType, Message } from "./Common/MessageContext/MessageContext";
 import FileUpload from './FileUpload/FileUpload';
 
 const RightSection = () => {
   const [message, setMessage] = useState('');
+  const { messages, setMessages } = React.useContext(MessagesContext) as MessagesType
 
   const handleMessageChange = (newValue: string) => {
     setMessage(newValue);
   };
 
   const handleSendButtonSubmit = () => {
-    console.log("SENDER SENT: ", message)
+    const newMessage: Message = {
+      id: crypto.randomUUID(),
+      sender: true,
+      text: message
+    }
+    setMessages([
+      ...messages || [],
+      newMessage
+    ])
+    setMessage("")
   }
 
   const handleReceivedButtonSubmit = () => {
-    console.log("RECEIVER SENT:  ", message)
+    const newMessage: Message = {
+      id: crypto.randomUUID(),
+      sender: false,
+      text: message
+    }
+    setMessages([
+      ...messages || [],
+      newMessage
+    ])
+    setMessage("")
   }
 
   return (
