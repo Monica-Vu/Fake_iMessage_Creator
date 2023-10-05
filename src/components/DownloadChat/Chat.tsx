@@ -1,24 +1,12 @@
 import React from "react";
 import SpeechBubble from "../Common/Speech_Bubble/SpeechBubble";
 import "./Chat.css";
-import {
-  SHORT_SPEECH_TEXT,
-  SHORT_SPEECH_TEXT_01,
-} from "../../constants";
 import ProfilePictureContext, {
   ProfilePictureType,
 } from "../Common/FileContext/FileContext";
 import ImageCrop from "../FileUpload/ImageCrop";
 import defaultImage from "../../images/unknown_person.png";
-
-const speechBubbles = [
-  { sender: true, text: SHORT_SPEECH_TEXT },
-  { sender: false, text: SHORT_SPEECH_TEXT_01 },
-  { sender: true, text: "WOAH! so cool! 🫶" },
-  { sender: true, text: "WOAH! so cool!!" },
-  { sender: false, text: "My boo is amazing" },
-  { sender: false, text: "My boo is talented!" },
-];
+import MessagesContext, { MessagesType } from "../Common/MessageContext/MessageContext";
 
 type ChatProps = {
   chatRef: React.RefObject<HTMLDivElement>;
@@ -26,6 +14,7 @@ type ChatProps = {
 
 const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   const { profilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
+  const { messages } = React.useContext(MessagesContext) as MessagesType
 
   return (
     <div className="capture-element" ref={chatRef}>
@@ -40,12 +29,12 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           border-radius="50%"
         />
       )}
-
-      {speechBubbles.map((bubble, index) => {
+      
+      {messages?.map((bubble, index) => {
         const removeTail = () => {
-          if (index <= speechBubbles.length - 2) {
+          if (index <= messages.length - 2) {
             if (
-              speechBubbles[index].sender === speechBubbles[index + 1].sender
+              messages[index].sender === messages[index + 1].sender
             ) {
               return true;
             }

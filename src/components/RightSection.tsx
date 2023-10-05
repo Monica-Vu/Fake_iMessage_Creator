@@ -10,15 +10,20 @@ const RightSection = () => {
     setMessage(newValue);
   };
 
-  const handleButtonSubmit = () => {
-    console.log("Sending message: ", message)
+  const handleSendButtonSubmit = () => {
+    console.log("SENDER SENT: ", message)
+  }
+
+  const handleReceivedButtonSubmit = () => {
+    console.log("RECEIVER SENT:  ", message)
   }
 
   return (
     <div>
       <FileUpload />
       <InputField value={message} label={"Message"} onChange={handleMessageChange}/> 
-      <Button text="Send" onClick={handleButtonSubmit}/>
+      <Button text="Send" onClick={handleSendButtonSubmit}/>
+      <Button text="Received" onClick={handleReceivedButtonSubmit}/>
     </div>
   );
 };
