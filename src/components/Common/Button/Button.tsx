@@ -1,7 +1,7 @@
 import React from "react";
 import "./Button.css";
 
-const DEFAULT_SPACING = "10px";
+const DEFAULT_SPACING = "5px";
 
 interface ButtonProps {
   text: string;
