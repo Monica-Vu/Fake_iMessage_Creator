@@ -1,0 +1,19 @@
+.input-field {
+  display: block;
+  margin-bottom: 10px;
+}
+  
+.input-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+  
+.round-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Adjust the value to control the roundness */
+  outline: none;
+}
+  

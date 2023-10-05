@@ -1,8 +1,10 @@
 import React from 'react';
 import "./Grid.css"
 import Download from '../DownloadChat/Download';
-import FileUpload from '../FileUpload/FileUpload';
+import RightSection from '../RightSection';
 
+// TODO: write it such as that grid item can take specific properties )i.e the text-alignment
+// use button as reference code
 const Grid: React.FC = () => {
     return(
         <div className="grid-container">
@@ -10,7 +12,7 @@ const Grid: React.FC = () => {
             <Download />           
              </div>
             <div className="grid-item"> 
-            <FileUpload /> 
+            <RightSection /> 
             </div>
         </div>
     );

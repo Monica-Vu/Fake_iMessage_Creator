@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import ImageCrop from "./ImageCrop";
 import Button from "../Common/Button/Button";
 import ProfilePictureContext, { ProfilePictureType } from "../Common/FileContext/FileContext";
+import "./FileUpload.css"
 
 function FileUpload() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -20,6 +21,7 @@ function FileUpload() {
 
   return (
     <div>
+      <h1> Contact Photo </h1>
       {profilePicture ? (
         <ImageCrop file={profilePicture} />
       ) : (<h6> No Profile Picture </h6>)}
