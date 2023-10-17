@@ -3,7 +3,7 @@ import Button from "./Common/Button/Button";
 import InputField from "./Common/Input_Field/InputField";
 import MessagesContext, { MessagesType, Message } from "./Common/MessageContext/MessageContext";
 import TextArea from "./Common/TextArea/TextArea";
-import FileUpload from './FileUpload/FileUpload';
+import ProfilePictureUpload from './ProfilePictureUpload/ProfilePictureUpload';
 
 const RightSection = () => {
   const [contactName, setContactName] = useState('');
@@ -46,8 +46,8 @@ const RightSection = () => {
 
   return (
     <div>
-      <FileUpload />
-      <InputField value={contactName} label={"Contact Name"} onChange={handleContactNameChange}/> 
+      <ProfilePictureUpload />
+      <InputField value={contactName} label={"contact name"} onChange={handleContactNameChange}/> 
       <TextArea text={message} onChange={handleMessageChange} /> 
       <Button text="Send" onClick={handleSendButtonSubmit}/>
       <Button text="Received" onClick={handleReceivedButtonSubmit}/>

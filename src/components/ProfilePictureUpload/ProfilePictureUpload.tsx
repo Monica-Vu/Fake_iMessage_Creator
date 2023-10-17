@@ -2,9 +2,9 @@ import React, { useRef } from "react";
 import ImageCrop from "./ImageCrop";
 import Button from "../Common/Button/Button";
 import ProfilePictureContext, { ProfilePictureType } from "../Common/FileContext/FileContext";
-import "./FileUpload.css"
+import "./ProfilePictureUpload.css"
 
-function FileUpload() {
+function ProfilePictureUpload() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const { profilePicture, setProfilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
 
@@ -37,4 +37,4 @@ function FileUpload() {
   );
 }
 
-export default FileUpload;
+export default ProfilePictureUpload;

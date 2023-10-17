@@ -29,7 +29,7 @@ const InputField: React.FC<InputFieldProps> = ({
     // <input type="text" value={value} onChange={handleInputChange} placeholder={`Enter ${label}`} />
     <div className="input-field">
       <label className="input-label">{label}</label>
-      <input type="text" className="round-input" value={value} onChange={handleInputChange} placeholder={"Enter Message Here"} />
+      <input type="text" className="round-input" value={value} onChange={handleInputChange} placeholder={`Enter ${label} here`} />
     </div>
   );
 };

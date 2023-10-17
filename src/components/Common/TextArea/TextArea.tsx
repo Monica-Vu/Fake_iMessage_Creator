@@ -21,7 +21,7 @@ const TextArea: React.FC<TextAreaProps> = ({
       cols={7}
       value={text}
       onChange={handleInputChange}
-      placeholder="Enter text here" /> 
+      placeholder="Enter message here" /> 
     );
 }
 

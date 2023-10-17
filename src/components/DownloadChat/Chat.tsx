@@ -4,7 +4,7 @@ import "./Chat.css";
 import ProfilePictureContext, {
   ProfilePictureType,
 } from "../Common/FileContext/FileContext";
-import ImageCrop from "../FileUpload/ImageCrop";
+import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import defaultImage from "../../images/unknown_person.png";
 import MessagesContext, { MessagesType } from "../Common/MessageContext/MessageContext";
 
