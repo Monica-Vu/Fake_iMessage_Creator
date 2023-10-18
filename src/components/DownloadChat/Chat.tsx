@@ -3,10 +3,11 @@ import SpeechBubble from "../Common/Speech_Bubble/SpeechBubble";
 import "./Chat.css";
 import ProfilePictureContext, {
   ProfilePictureType,
-} from "../Common/FileContext/FileContext";
+} from "../../context/FileContext/FileContext";
 import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import defaultImage from "../../images/unknown_person.png";
-import MessagesContext, { MessagesType } from "../Common/MessageContext/MessageContext";
+import MessagesContext, { MessagesType } from "../../context/MessageContext/MessageContext";
+import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
 
 type ChatProps = {
   chatRef: React.RefObject<HTMLDivElement>;
@@ -14,7 +15,8 @@ type ChatProps = {
 
 const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   const { profilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
-  const { messages } = React.useContext(MessagesContext) as MessagesType
+  const { messages } = React.useContext(MessagesContext) as MessagesType;
+  const { contactName } = React.useContext(ContactNameContext) as ContactNameType;
 
   return (
     <div className="capture-element" ref={chatRef}>
@@ -29,6 +31,8 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           border-radius="50%"
         />
       )}
+
+      <h6> {contactName} </h6>
       
       {messages?.map((bubble, index) => {
         const removeTail = () => {

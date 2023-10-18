@@ -2,13 +2,13 @@ import React from "react";
 import "./InputField.css"
 
 interface InputFieldProps {
-  label: string;
+  attribute: string;
   value: string;
   onChange: (newValue: string) => void;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
-  label,
+  attribute,
   value,
   onChange
 }) => {
@@ -28,8 +28,7 @@ const InputField: React.FC<InputFieldProps> = ({
   return (
     // <input type="text" value={value} onChange={handleInputChange} placeholder={`Enter ${label}`} />
     <div className="input-field">
-      <label className="input-label">{label}</label>
-      <input type="text" className="round-input" value={value} onChange={handleInputChange} placeholder={`Enter ${label} here`} />
+      <input type="text" className="round-input" value={value} onChange={handleInputChange} placeholder={`Enter ${attribute} here`} />
     </div>
   );
 };

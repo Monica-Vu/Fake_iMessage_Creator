@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import ImageCrop from "./ImageCrop";
 import Button from "../Common/Button/Button";
-import ProfilePictureContext, { ProfilePictureType } from "../Common/FileContext/FileContext";
+import ProfilePictureContext, { ProfilePictureType } from "../../context/FileContext/FileContext";
 import "./ProfilePictureUpload.css"
 
 function ProfilePictureUpload() {
