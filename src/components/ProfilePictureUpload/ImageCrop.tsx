@@ -12,21 +12,17 @@ interface ImageCropProps {
 
 function ImageCrop({ file, width, height, borderRadius, left }: ImageCropProps): JSX.Element {
   const imageStyle: React.CSSProperties = {
-    width: width|| "100%",
+    width: width || "100%",
     height: height || "100%",
     borderRadius: borderRadius || "0%",
   }
-  
-  return (
-    <div>
-        {file && (
-          <img
-            src={URL.createObjectURL(file)}
-            style={imageStyle}
-          />
-        )}
-    </div>
-  );
+
+  return file && (
+    <img
+      src={URL.createObjectURL(file)}
+      style={imageStyle}
+    />
+  )
 }
 
 export default ImageCrop;

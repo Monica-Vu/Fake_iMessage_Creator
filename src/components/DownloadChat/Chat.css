@@ -10,3 +10,13 @@
     overflow-x: hidden;
   }
 
+.left {
+  display: flex;
+  padding-left: 10px;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}

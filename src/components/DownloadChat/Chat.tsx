@@ -47,9 +47,12 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         };
 
         if (bubble.image) {
-          return <ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" />
+          if (bubble.sender) {
+            return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
+          } else {
+            return <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
+          }
         }
-
 
         if (bubble.text) {
           return (

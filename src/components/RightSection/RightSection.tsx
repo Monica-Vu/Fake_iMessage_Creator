@@ -49,6 +49,7 @@ const RightSection = () => {
       ...(message && { text: message }),
       ...(imageAttachment && { image: imageAttachment })
     }
+    console.log(`Updating!!!`);
     setMessages([
       ...messages || [],
       newMessage
