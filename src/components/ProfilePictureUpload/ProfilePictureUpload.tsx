@@ -15,7 +15,6 @@ function ProfilePictureUpload() {
     setContactName(newValue);
   };
 
-
   const handleButtonClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();

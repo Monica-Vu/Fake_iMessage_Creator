@@ -46,14 +46,20 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           }
         };
 
-        return (
-          <SpeechBubble
-            key={index}
-            sender={bubble.sender}
-            text={bubble.text}
-            removeTail={removeTail()}
-          />
-        );
+        if (bubble.image) {
+          return <img src={URL.createObjectURL(bubble.image)} />
+        }
+
+        if (bubble.text) {
+          return (
+            <SpeechBubble
+              key={index}
+              sender={bubble.sender}
+              text={bubble.text}
+              removeTail={removeTail()}
+            />
+          );
+        }
       })}
     </div>
   );

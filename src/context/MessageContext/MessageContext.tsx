@@ -3,7 +3,8 @@ import { createContext } from "react";
 export type Message = {
     id: string,
     sender: boolean,
-    text: string
+    text?: string,
+    image?: File
 }
 
 export type MessagesType = {
