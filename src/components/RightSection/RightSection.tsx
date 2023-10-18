@@ -5,12 +5,15 @@ import TextArea from "../Common/TextArea/TextArea";
 import ProfilePictureUpload from '../ProfilePictureUpload/ProfilePictureUpload';
 import "./RightSection.css"
 import ImageCrop from "../ProfilePictureUpload/ImageCrop";
+import InputField from "../Common/Input_Field/InputField";
+import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
 
 const RightSection = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [message, setMessage] = useState('');
   const [imageAttachment, setImageAttachment] = useState<File | null>(null);
   const { messages, setMessages } = React.useContext(MessagesContext) as MessagesType
+  const { time, setTime } = React.useContext(TimeContext) as TimeType
 
   const handleImageMessageSubmit = () => {
     if (fileInputRef.current) {
@@ -25,6 +28,10 @@ const RightSection = () => {
 
   const handleMessageChange = (newValue: string) => {
     setMessage(newValue);
+  };
+
+  const handleTimeChange = (newValue: string) => {
+    setTime(newValue);
   };
 
   const handleSendButtonSubmit = () => {
@@ -74,6 +81,7 @@ const RightSection = () => {
           accept=".png, .jpg, .jpeg, .gif"
           style={{ display: "none" }}
         />
+         <InputField value={time} attribute="time name" onChange={handleTimeChange} />
     </div>
   );
 };

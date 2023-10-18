@@ -8,10 +8,12 @@ import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import defaultImage from "../../images/unknown_person.png";
 import MessagesContext, { MessagesType } from "../../context/MessageContext/MessageContext";
 import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
+import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
 
 import barsImage from "../../images/bars.png";
 import wifiImage from "../../images/wifi.png"
 import batteryImage from "../../images/battery.png"
+
 
 type ChatProps = {
   chatRef: React.RefObject<HTMLDivElement>;
@@ -21,13 +23,19 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   const { profilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
   const { messages } = React.useContext(MessagesContext) as MessagesType;
   const { contactName } = React.useContext(ContactNameContext) as ContactNameType;
+  const { time } = React.useContext(TimeContext) as TimeType;
 
   return (
     <div className="capture-element" ref={chatRef}>
-      <div className="right">
-        <img src={barsImage} alt="signal-strength" /> 
-        <img src={wifiImage} alt="wifi" />
-        <img src={batteryImage} alt="battery" /> 
+      <div id="header-container">
+        <div className="left">
+        <h6 id="time"> {time}</h6>
+        </div>
+        <div className="right">
+          <img src={barsImage} alt="signal-strength" />
+          <img src={wifiImage} alt="wifi" />
+          <img src={batteryImage} alt="battery" />
+        </div>
       </div>
 
       {profilePicture ? (

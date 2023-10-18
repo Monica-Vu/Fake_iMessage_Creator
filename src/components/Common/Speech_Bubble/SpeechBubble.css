@@ -51,6 +51,7 @@
 	&:after {
 		right: -26px;
     width: 26px;
+    height: 30px;
     background-color: #fff;
 		border-bottom-left-radius: 10px;
 	}
