@@ -9,6 +9,10 @@ import defaultImage from "../../images/unknown_person.png";
 import MessagesContext, { MessagesType } from "../../context/MessageContext/MessageContext";
 import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
 
+import barsImage from "../../images/bars.png";
+import wifiImage from "../../images/wifi.png"
+import batteryImage from "../../images/battery.png"
+
 type ChatProps = {
   chatRef: React.RefObject<HTMLDivElement>;
 };
@@ -20,6 +24,12 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
 
   return (
     <div className="capture-element" ref={chatRef}>
+      <div className="right">
+        <img src={barsImage} alt="signal-strength" /> 
+        <img src={wifiImage} alt="wifi" />
+        <img src={batteryImage} alt="battery" /> 
+      </div>
+
       {profilePicture ? (
         <ImageCrop file={profilePicture} width="63px" height="63px" borderRadius="50%" />
       ) : (
