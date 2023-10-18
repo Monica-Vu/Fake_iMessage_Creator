@@ -32,7 +32,8 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         />
       )}
 
-      <h6> {contactName} </h6>
+      {/* TODO: put lightgrey arrow -- small image */}
+      <p> {contactName} </p>
       
       {messages?.map((bubble, index) => {
         const removeTail = () => {
