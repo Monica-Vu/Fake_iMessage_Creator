@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
 import "react-image-crop/dist/ReactCrop.css";
+import "./ImageCrop.css"
 
 interface ImageCropProps {
   file: File;
+  width?: string;
+  height?: string;
+  borderRadius?: string;
+  left?: string;
 }
 
-function ImageCrop({ file }: ImageCropProps): JSX.Element {
-  const [image, setImage] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setImage(imageUrl);
-    }
-  }, [file]);
-
+function ImageCrop({ file, width, height, borderRadius, left }: ImageCropProps): JSX.Element {
+  const imageStyle: React.CSSProperties = {
+    width: width|| "100%",
+    height: height || "100%",
+    borderRadius: borderRadius || "0%",
+  }
+  
   return (
     <div>
-        {image && (
+        {file && (
           <img
-            src={image}
-            style={{
-              width: "63px",
-              height: "63px",
-              borderRadius: "50%"
-            }}
+            src={URL.createObjectURL(file)}
+            style={imageStyle}
           />
         )}
     </div>

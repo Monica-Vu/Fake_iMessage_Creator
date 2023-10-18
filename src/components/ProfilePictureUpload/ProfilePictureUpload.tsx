@@ -30,7 +30,7 @@ function ProfilePictureUpload() {
     <div className="flex-grid">
       <div className="col">
         {profilePicture ? (
-          <ImageCrop file={profilePicture} />
+          <ImageCrop file={profilePicture} width="63px" height="63px" borderRadius="50%"/>
         ) : (<h6> No Profile Picture </h6>)}
         <div className="col"> 
         <Button text="Upload" onClick={handleButtonClick} />

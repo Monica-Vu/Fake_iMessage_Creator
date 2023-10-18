@@ -1,0 +1,7 @@
+.left {
+  flex-flow: flex-end;
+}
+
+.right {
+  flex-flow: flex-start;
+}

@@ -21,7 +21,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   return (
     <div className="capture-element" ref={chatRef}>
       {profilePicture ? (
-        <ImageCrop file={profilePicture} />
+        <ImageCrop file={profilePicture} width="63px" height="63px" borderRadius="50%" />
       ) : (
         <img
           src={defaultImage}
@@ -34,7 +34,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
 
       {/* TODO: put lightgrey arrow -- small image */}
       <p> {contactName} </p>
-      
+
       {messages?.map((bubble, index) => {
         const removeTail = () => {
           if (index <= messages.length - 2) {
@@ -47,8 +47,9 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         };
 
         if (bubble.image) {
-          return <img src={URL.createObjectURL(bubble.image)} />
+          return <ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" />
         }
+
 
         if (bubble.text) {
           return (

@@ -4,6 +4,7 @@ import MessagesContext, { MessagesType, Message } from "../../context/MessageCon
 import TextArea from "../Common/TextArea/TextArea";
 import ProfilePictureUpload from '../ProfilePictureUpload/ProfilePictureUpload';
 import "./RightSection.css"
+import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 
 const RightSection = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -32,7 +33,6 @@ const RightSection = () => {
       sender: true,
       ...(message && { text: message }),
       ...(imageAttachment && { image: imageAttachment })
-      // text: message
     }
     setMessages([
       ...messages || [],
@@ -46,13 +46,15 @@ const RightSection = () => {
     const newMessage: Message = {
       id: crypto.randomUUID(),
       sender: false,
-      text: message
+      ...(message && { text: message }),
+      ...(imageAttachment && { image: imageAttachment })
     }
     setMessages([
       ...messages || [],
       newMessage
     ])
     setMessage("")
+    setImageAttachment(null)
   }
 
   return (
@@ -60,7 +62,7 @@ const RightSection = () => {
       <h1 id="contactName">Contacts</h1>
       <ProfilePictureUpload />
       <TextArea text={message} onChange={handleMessageChange} />
-      {imageAttachment && <img src={URL.createObjectURL(imageAttachment)} style={{width: "100px", height: "100px"}}/>}
+      {imageAttachment && <ImageCrop file={imageAttachment} width="63px" height="63px" borderRadius="10%"/>}
       <Button text="Send" onClick={handleSendButtonSubmit} />
       <Button text="Received" onClick={handleReceivedButtonSubmit} />
       <Button text="Image" onClick={handleImageMessageSubmit} />
