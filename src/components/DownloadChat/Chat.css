@@ -9,11 +9,17 @@
 }
 
 .capture-element {
-    width: 390px;
-    height: 700px;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
+  width: 390px;
+  height: 700px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+} 
+
+.capture-element::-webkit-scrollbar {
+  display: none;
+}
 
 #header-container {
   display: flex;
@@ -24,6 +30,15 @@
 
 #chat {
   padding-top: 10px;
+  height: 550px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -ms-overflow-style: none;  
+  scrollbar-width: none;   
+}
+
+#chat::-webkit-scrollbar {
+  display: none;
 }
 
 #contact {
@@ -51,5 +66,10 @@
   display: flex;
   justify-content: flex-end;
   padding-right: 10px;
+  gap: 5px;
+}
+
+#footer {
+  display: flex;
   gap: 5px;
 }

@@ -17,6 +17,10 @@ import batteryImage from "../../images/battery.png"
 import backArrowImage from "../../images/Back_Arrow.svg"
 import moreArrowImage from "../../images/More_Arrow.svg"
 
+import CameraImage from "../../images/Camera.svg"
+import AppIconImage from "../../images/App.svg"
+import ChatImage from "../../images/Chat.svg"
+
 type ChatProps = {
   chatRef: React.RefObject<HTMLDivElement>;
 };
@@ -41,7 +45,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
       </div>
       <div id="contact">
         <div className="left" style={{ paddingTop: "15px" }}>
-          <img src={backArrowImage} alt="back-arrow" width="35px" height="35px"/>
+          <img src={backArrowImage} alt="back-arrow" width="35px" height="35px" />
         </div>
         <div id="contact-image">
           {profilePicture ? (
@@ -57,10 +61,9 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           )}
 
         </div>
-       
+
       </div>
-      <p id="contact-name"> {contactName}  <img src={moreArrowImage} alt="more-arrow" height="12px" width="12px" /> </p>  
-     
+      <p id="contact-name"> {contactName}  <img src={moreArrowImage} alt="more-arrow" height="12px" width="12px" /> </p>
 
       <div id="chat">
         {messages?.map((bubble, index) => {
@@ -93,6 +96,12 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
             );
           }
         })}
+
+      </div>
+      <div id="footer">
+        <img src={CameraImage} />
+        <img src={AppIconImage} />
+          <img src={ChatImage} />
       </div>
     </div>
   );
