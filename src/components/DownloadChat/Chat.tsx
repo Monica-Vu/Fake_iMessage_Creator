@@ -15,7 +15,7 @@ import wifiImage from "../../images/wifi.png"
 import batteryImage from "../../images/battery.png"
 
 import backArrowImage from "../../images/Back_Arrow.svg"
-
+import moreArrowImage from "../../images/More_Arrow.svg"
 
 type ChatProps = {
   chatRef: React.RefObject<HTMLDivElement>;
@@ -59,7 +59,8 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         </div>
        
       </div>
-      <p id="contact-name"> {contactName} </p>  {/* TODO: put lightgrey arrow -- small image */}
+      <p id="contact-name"> {contactName}  <img src={moreArrowImage} alt="more-arrow" height="12px" width="12px" /> </p>  
+     
 
       <div id="chat">
         {messages?.map((bubble, index) => {
