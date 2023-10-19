@@ -8,7 +8,6 @@
     flex: 0 0 calc(50% - 20px);
     margin: 10px;
     padding: 15px;
-    border: 1px solid #ccc;  /* TODO: remove when app completed; this is just for guidelines */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
