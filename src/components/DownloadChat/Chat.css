@@ -4,7 +4,7 @@
 }
 
 #time {
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
 }
 
@@ -18,6 +18,28 @@
 #header-container {
   display: flex;
   justify-content: space-between;
+  padding-top: 5px;
+  background-color: #ecedf0;
+}
+
+#chat {
+  padding-top: 10px;
+}
+
+#contact {
+  padding-top: 10px;
+  background-color: #ecedf0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#contact-name {
+  padding-bottom: 5px;
+  background-color: #ecedf0;
+}
+
+#contact-image {
+  padding-left: 120px;
 }
 
 .left {

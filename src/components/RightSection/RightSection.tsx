@@ -67,8 +67,9 @@ const RightSection = () => {
 
   return (
     <div>
-      <h1 id="contactName">Contacts</h1>
+      <h1 className="title">Contacts</h1>
       <ProfilePictureUpload />
+      <h1 className="title">Message</h1>
       <TextArea text={message} onChange={handleMessageChange} />
       {imageAttachment && <ImageCrop file={imageAttachment} width="63px" height="63px" borderRadius="10%"/>}
       <Button text="Send" onClick={handleSendButtonSubmit} />
@@ -81,6 +82,7 @@ const RightSection = () => {
           accept=".png, .jpg, .jpeg, .gif"
           style={{ display: "none" }}
         />
+         <h1 className="title">Current Time</h1>
          <InputField value={time} attribute="time name" onChange={handleTimeChange} />
     </div>
   );

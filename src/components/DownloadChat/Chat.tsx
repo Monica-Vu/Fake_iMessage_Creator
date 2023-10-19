@@ -14,6 +14,8 @@ import barsImage from "../../images/bars.png";
 import wifiImage from "../../images/wifi.png"
 import batteryImage from "../../images/battery.png"
 
+import backArrowImage from "../../images/Back_Arrow.svg"
+
 
 type ChatProps = {
   chatRef: React.RefObject<HTMLDivElement>;
@@ -29,7 +31,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
     <div className="capture-element" ref={chatRef}>
       <div id="header-container">
         <div className="left">
-        <h6 id="time"> {time}</h6>
+          <h6 id="time"> {time}</h6>
         </div>
         <div className="right">
           <img src={barsImage} alt="signal-strength" />
@@ -37,52 +39,60 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           <img src={batteryImage} alt="battery" />
         </div>
       </div>
+      <div id="contact">
+        <div className="left" style={{ paddingTop: "15px" }}>
+          <img src={backArrowImage} alt="back-arrow" width="35px" height="35px"/>
+        </div>
+        <div id="contact-image">
+          {profilePicture ? (
+            <ImageCrop file={profilePicture} width="63px" height="63px" borderRadius="50%" />
+          ) : (
+            <img
+              src={defaultImage}
+              alt="Unknown Person"
+              width="63px"
+              height="63px"
+              border-radius="50%"
+            />
+          )}
 
-      {profilePicture ? (
-        <ImageCrop file={profilePicture} width="63px" height="63px" borderRadius="50%" />
-      ) : (
-        <img
-          src={defaultImage}
-          alt="Unknown Person"
-          width="63px"
-          height="63px"
-          border-radius="50%"
-        />
-      )}
+        </div>
+       
+      </div>
+      <p id="contact-name"> {contactName} </p>  {/* TODO: put lightgrey arrow -- small image */}
 
-      {/* TODO: put lightgrey arrow -- small image */}
-      <p> {contactName} </p>
+      <div id="chat">
+        {messages?.map((bubble, index) => {
+          const removeTail = () => {
+            if (index <= messages.length - 2) {
+              if (
+                messages[index].sender === messages[index + 1].sender
+              ) {
+                return true;
+              }
+            }
+          };
 
-      {messages?.map((bubble, index) => {
-        const removeTail = () => {
-          if (index <= messages.length - 2) {
-            if (
-              messages[index].sender === messages[index + 1].sender
-            ) {
-              return true;
+          if (bubble.image) {
+            if (bubble.sender) {
+              return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
+            } else {
+              return <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
             }
           }
-        };
 
-        if (bubble.image) {
-          if (bubble.sender) {
-            return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
-          } else {
-            return <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
+          if (bubble.text) {
+            return (
+              <SpeechBubble
+                key={index}
+                sender={bubble.sender}
+                text={bubble.text}
+                removeTail={removeTail()}
+              />
+            );
           }
-        }
-
-        if (bubble.text) {
-          return (
-            <SpeechBubble
-              key={index}
-              sender={bubble.sender}
-              text={bubble.text}
-              removeTail={removeTail()}
-            />
-          );
-        }
-      })}
+        })}
+      </div>
     </div>
   );
 };
