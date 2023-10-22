@@ -5,7 +5,6 @@ import ProfilePictureContext, {
   ProfilePictureType,
 } from "../../context/FileContext/FileContext";
 import ImageCrop from "../ProfilePictureUpload/ImageCrop";
-import defaultImage from "../../images/unknown_person.png";
 import MessagesContext, { MessagesType } from "../../context/MessageContext/MessageContext";
 import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
 import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
@@ -15,6 +14,7 @@ import wifiImage from "../../images/wifi.png"
 import batteryImage from "../../images/battery.png"
 
 import backArrowImage from "../../images/Back_Arrow.svg"
+import unknownPersonImage from "../../images/unknown_person.svg";
 import moreArrowImage from "../../images/More_Arrow.svg"
 
 import CameraImage from "../../images/Camera.svg"
@@ -52,7 +52,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
             <ImageCrop file={profilePicture} width="63px" height="63px" borderRadius="50%" />
           ) : (
             <img
-              src={defaultImage}
+              src={unknownPersonImage}
               alt="Unknown Person"
               width="63px"
               height="63px"
