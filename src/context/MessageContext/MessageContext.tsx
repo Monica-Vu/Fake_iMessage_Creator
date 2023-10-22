@@ -4,7 +4,8 @@ export type Message = {
     id: string,
     sender: boolean,
     text?: string,
-    image?: File
+    image?: File,
+    date?: string
 }
 
 export type MessagesType = {

@@ -95,6 +95,10 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
               />
             );
           }
+
+          if (bubble.date) {
+            return (<h6 className="time-divider">{bubble.date}</h6>)
+          }
         })}
 
       </div>

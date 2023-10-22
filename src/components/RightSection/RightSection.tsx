@@ -14,6 +14,7 @@ const RightSection = () => {
   const [imageAttachment, setImageAttachment] = useState<File | null>(null);
   const { messages, setMessages } = React.useContext(MessagesContext) as MessagesType
   const { time, setTime } = React.useContext(TimeContext) as TimeType
+  const [ dateDivider, setDateDivision ] = useState<string>("");
 
   const handleImageMessageSubmit = () => {
     if (fileInputRef.current) {
@@ -65,6 +66,26 @@ const RightSection = () => {
     setImageAttachment(null)
   }
 
+  const handleDateDividerSubmit = () => {
+    const newMessage: Message = {
+      id: crypto.randomUUID(),
+      sender: false,
+      ...(dateDivider && { date: dateDivider })
+    }
+
+    setMessages([
+      ...messages || [],
+      newMessage
+    ])
+
+    setDateDivision("")
+  }
+
+  const handleDateDividerChange = (newValue: string) => {
+    setDateDivision(newValue);
+  };
+
+
   return (
     <div>
       <h1 className="title">Contacts</h1>
@@ -83,7 +104,10 @@ const RightSection = () => {
           style={{ display: "none" }}
         />
          <h1 className="title">Current Time</h1>
-         <InputField value={time} attribute="time name" onChange={handleTimeChange} />
+         <InputField value={time} attribute="time" onChange={handleTimeChange} />
+         <h1 className="title">Date Divider</h1>
+         <InputField value={dateDivider} attribute="date divider" onChange={handleDateDividerChange} />
+         <Button text="Submit" onClick={handleDateDividerSubmit} /> 
     </div>
   );
 };
