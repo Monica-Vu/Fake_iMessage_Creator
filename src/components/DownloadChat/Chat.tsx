@@ -70,8 +70,11 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           const removeTail = () => {
             if (index <= messages.length - 2) {
               if (
+                messages[index].hasOwnProperty("text") && 
+                messages[index + 1].hasOwnProperty("text") && 
                 messages[index].sender === messages[index + 1].sender
               ) {
+                console.log("remove tail statement condition met");
                 return true;
               }
             }
