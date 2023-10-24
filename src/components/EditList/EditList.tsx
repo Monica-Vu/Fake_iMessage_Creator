@@ -1,25 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DragDropContext, Droppable, Draggable, type OnDragEndResponder } from 'react-beautiful-dnd';
-import MessagesContext, { MessagesType } from "../../context/MessageContext/MessageContext";
+import MessagesContext, { MessagesType, type Message } from "../../context/MessageContext/MessageContext";
 import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import Button from "../Common/Button/Button";
 
-const handleUpdateList = () => {
-    console.log("handleUpdateList is called")
-}
-
 const EditList: React.FC = ({ }) => {
-    const { messages, setMessages } = React.useContext(MessagesContext) as MessagesType;
+    const { messages, setMessages, setIsEditing } = React.useContext(MessagesContext) as MessagesType;
+    const [tempMessages, setTempMessages] = useState(messages);
 
+    const handleUpdateList = () => {
+        setMessages(tempMessages);
+        setIsEditing(false);
+    }
+    
     //@ts-expect-error
     const onDragEnd = (result) => {
         if (!result.destination) return;
 
-        const items = Array.from(messages || []);
+        const items = Array.from(tempMessages || []);
         const [reorderedItem] = items.splice(result.source.index, 1);
         items.splice(result.destination.index, 0, reorderedItem);
 
-        setMessages(messages);
+        setTempMessages(items);
     }
 
     return (
@@ -28,7 +30,7 @@ const EditList: React.FC = ({ }) => {
             <Droppable droppableId="messages">
                 {(provided) => (
                     <div ref={provided.innerRef} {...provided.droppableProps}>
-                        {messages?.map((message, index) => (
+                        {tempMessages?.map((message, index) => (
                             <Draggable 
                                 key={message.id}
                                 draggableId={message.id}
