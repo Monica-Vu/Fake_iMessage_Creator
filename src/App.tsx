@@ -7,6 +7,7 @@ import TimeContext from "./context/TimeContext/TimeContext";
 
 function App() {
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
   const [messages, setMessages] = useState<Message[] | null>([]);
   const [contactName, setContactName ] = useState<string | "">("");
   const [time, setTime] = useState<string>("12:00PM")
@@ -15,7 +16,7 @@ function App() {
     <TimeContext.Provider value={{ time, setTime}}>
     <ContactNameContext.Provider value={{ contactName, setContactName }}> 
     <ProfilePictureContext.Provider value={{ setProfilePicture, profilePicture }}>
-    <MessagesContext.Provider value={{ setMessages, messages }}>
+    <MessagesContext.Provider value={{ setMessages, messages, isEditing, setIsEditing }}>
       <div className="App">
         <Grid />
       </div>

@@ -11,6 +11,8 @@ export type Message = {
 export type MessagesType = {
     messages: Message[] | null;
     setMessages: (messages: Message[] | null) => void;
+    setIsEditing: (isEditing: boolean) => void;
+    isEditing: boolean;
 }
 
 const MessagesContext = createContext<MessagesType | null>(null)

@@ -12,9 +12,9 @@ const RightSection = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [message, setMessage] = useState('');
   const [imageAttachment, setImageAttachment] = useState<File | null>(null);
-  const { messages, setMessages } = React.useContext(MessagesContext) as MessagesType
+  const { messages, setMessages, isEditing, setIsEditing } = React.useContext(MessagesContext) as MessagesType
   const { time, setTime } = React.useContext(TimeContext) as TimeType
-  const [ dateDivider, setDateDivision ] = useState<string>("");
+  const [dateDivider, setDateDivision] = useState<string>("");
 
   const handleImageMessageSubmit = () => {
     if (fileInputRef.current) {
@@ -85,6 +85,11 @@ const RightSection = () => {
     setDateDivision(newValue);
   };
 
+  const handleEditSubmit = () => {
+
+    setIsEditing(!isEditing);
+  }
+
 
   return (
     <div>
@@ -92,22 +97,26 @@ const RightSection = () => {
       <ProfilePictureUpload />
       <h1 className="title">Message</h1>
       <TextArea text={message} onChange={handleMessageChange} />
-      {imageAttachment && <ImageCrop file={imageAttachment} width="63px" height="63px" borderRadius="10%"/>}
+      {imageAttachment && <ImageCrop file={imageAttachment} width="63px" height="63px" borderRadius="10%" />}
       <Button text="Send" onClick={handleSendButtonSubmit} />
       <Button text="Received" onClick={handleReceivedButtonSubmit} />
       <Button text="Image" onClick={handleImageMessageSubmit} />
       <input
-          type="file"
-          ref={fileInputRef}
-          onChange={handleFileChange}
-          accept=".png, .jpg, .jpeg, .gif"
-          style={{ display: "none" }}
-        />
-         <h1 className="title">Current Time</h1>
-         <InputField value={time} attribute="time" onChange={handleTimeChange} />
-         <h1 className="title">Date Divider</h1>
-         <InputField value={dateDivider} attribute="date divider" onChange={handleDateDividerChange} />
-         <Button text="Submit" onClick={handleDateDividerSubmit} /> 
+        type="file"
+        ref={fileInputRef}
+        onChange={handleFileChange}
+        accept=".png, .jpg, .jpeg, .gif"
+        style={{ display: "none" }}
+      />
+      <h1 className="title">Current Time</h1>
+      <InputField value={time} attribute="time" onChange={handleTimeChange} />
+      <h1 className="title">Date Divider</h1>
+      <InputField value={dateDivider} attribute="date divider" onChange={handleDateDividerChange} />
+      <Button text="Submit" onClick={handleDateDividerSubmit} />
+      <br />
+      <div className="left">
+        <Button text="Edit Mode" colour={"orange"} padding={"10px"} onClick={handleEditSubmit} />
+      </div>
     </div>
   );
 };

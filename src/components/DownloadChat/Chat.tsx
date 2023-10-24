@@ -20,6 +20,7 @@ import moreArrowImage from "../../images/More_Arrow.svg"
 import CameraImage from "../../images/Camera.svg"
 import AppIconImage from "../../images/App.svg"
 import ChatImage from "../../images/Chat.svg"
+import EditList from "../EditList/EditList";
 
 type ChatProps = {
   chatRef: React.RefObject<HTMLDivElement>;
@@ -27,9 +28,13 @@ type ChatProps = {
 
 const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   const { profilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
-  const { messages } = React.useContext(MessagesContext) as MessagesType;
+  const { messages, isEditing, setIsEditing } = React.useContext(MessagesContext) as MessagesType;
   const { contactName } = React.useContext(ContactNameContext) as ContactNameType;
   const { time } = React.useContext(TimeContext) as TimeType;
+
+  if (isEditing) {
+    return <EditList /> 
+  }
 
   return (
     <div className="capture-element" ref={chatRef}>
@@ -74,7 +79,6 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
                 messages[index + 1].hasOwnProperty("text") && 
                 messages[index].sender === messages[index + 1].sender
               ) {
-                console.log("remove tail statement condition met");
                 return true;
               }
             }
@@ -100,7 +104,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           }
 
           if (bubble.date) {
-            return (<h6 className="time-divider">{bubble.date}</h6>)
+            return (<h6 key={bubble.id} className="time-divider">{bubble.date}</h6>)
           }
         })}
 
