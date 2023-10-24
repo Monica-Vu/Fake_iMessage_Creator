@@ -98,24 +98,28 @@ const RightSection = () => {
       <h1 className="title">Message</h1>
       <TextArea text={message} onChange={handleMessageChange} />
       {imageAttachment && <ImageCrop file={imageAttachment} width="63px" height="63px" borderRadius="10%" />}
-      <Button text="Send" onClick={handleSendButtonSubmit} />
-      <Button text="Received" onClick={handleReceivedButtonSubmit} />
-      <Button text="Image" onClick={handleImageMessageSubmit} />
-      <input
-        type="file"
-        ref={fileInputRef}
-        onChange={handleFileChange}
-        accept=".png, .jpg, .jpeg, .gif"
-        style={{ display: "none" }}
-      />
+      <div className="left-item">
+        <Button text="Send" onClick={handleSendButtonSubmit} />
+        <Button text="Received" onClick={handleReceivedButtonSubmit} />
+        <Button text="Image" onClick={handleImageMessageSubmit} margin="5px 0 5px 50px" colour="orange"/>
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          accept=".png, .jpg, .jpeg, .gif"
+          style={{ display: "none" }}
+        />
+      </div>
       <h1 className="title">Current Time</h1>
       <InputField value={time} attribute="time" onChange={handleTimeChange} />
       <h1 className="title">Date Divider</h1>
       <InputField value={dateDivider} attribute="date divider" onChange={handleDateDividerChange} />
-      <Button text="Submit" onClick={handleDateDividerSubmit} />
+      <div className="left-item">
+        <Button text="Submit" onClick={handleDateDividerSubmit} margin="5px 0px" />
+      </div>
       <br />
-      <div className="left">
-        <Button text="Edit Mode" colour={"orange"} padding={"10px"} onClick={handleEditSubmit} />
+      <div className="left-item">
+        <Button text="Edit Mode" colour={"orange"} padding={"10px"} onClick={handleEditSubmit} margin="5px 0px" />
       </div>
     </div>
   );
