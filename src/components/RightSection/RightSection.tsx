@@ -99,7 +99,7 @@ const RightSection = () => {
       <TextArea text={message} onChange={handleMessageChange} />
       {imageAttachment && <ImageCrop file={imageAttachment} width="63px" height="63px" borderRadius="10%" />}
       <div className="left-item">
-        <Button text="Send" onClick={handleSendButtonSubmit} />
+        <Button text="Send" onClick={handleSendButtonSubmit} margin="5px 0"/>
         <Button text="Received" onClick={handleReceivedButtonSubmit} />
         <Button text="Image" onClick={handleImageMessageSubmit} margin="5px 0 5px 50px" colour="orange"/>
         <input
