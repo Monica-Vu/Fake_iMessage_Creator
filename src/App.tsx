@@ -4,6 +4,7 @@ import { useState } from "react";
 import MessagesContext, { Message } from "./context/MessageContext/MessageContext";
 import ContactNameContext from "./context/ContactNameContext/ContactNameContext";
 import TimeContext from "./context/TimeContext/TimeContext";
+import "./App.css"
 
 function App() {
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
@@ -19,6 +20,14 @@ function App() {
     <MessagesContext.Provider value={{ setMessages, messages, isEditing, setIsEditing }}>
       <div className="App">
         <Grid />
+
+        <p> Copyright © 2023 FakeChatCreator 
+          <br /> <br /> 
+
+        FakeChatCreator is not affiliated with Apple, iPhone, iMessage, or iPhone Text Messages or responsible for any user generated content.
+        <br /> 
+        Please only use this for creating fictional stories (ex/ smau, text scenario, anything similar of those sorts).
+        </p>
       </div>
       </MessagesContext.Provider>
     </ProfilePictureContext.Provider>
