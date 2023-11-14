@@ -20,6 +20,7 @@
     justify-content: center;
     text-align: center;
     align-self: stretch;
+    min-width: 400px;
 }
 
 .align-left {
