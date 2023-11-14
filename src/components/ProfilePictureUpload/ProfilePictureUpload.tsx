@@ -4,7 +4,7 @@ import Button from "../Common/Button/Button";
 import ProfilePictureContext, { ProfilePictureType } from "../../context/FileContext/FileContext";
 import "./ProfilePictureUpload.css"
 import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
-import InputField from "../Common/Input_Field/InputField";
+import InputField from "../Common/InputField/InputField";
 
 function ProfilePictureUpload() {
   const fileInputRef = useRef<HTMLInputElement | null>(null);

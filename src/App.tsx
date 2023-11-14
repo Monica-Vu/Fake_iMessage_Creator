@@ -21,13 +21,6 @@ function App() {
       <div className="App">
         <Grid />
 
-        <p> Copyright © 2023 FakeChatCreator 
-          <br /> <br /> 
-
-        FakeChatCreator is not affiliated with Apple, iPhone, iMessage, or iPhone Text Messages or responsible for any user generated content.
-        <br /> 
-        Please only use this for creating fictional stories (ex/ smau, text scenario, anything similar of those sorts).
-        </p>
       </div>
       </MessagesContext.Provider>
     </ProfilePictureContext.Provider>

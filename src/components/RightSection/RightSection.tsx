@@ -5,7 +5,7 @@ import TextArea from "../Common/TextArea/TextArea";
 import ProfilePictureUpload from '../ProfilePictureUpload/ProfilePictureUpload';
 import "./RightSection.css"
 import ImageCrop from "../ProfilePictureUpload/ImageCrop";
-import InputField from "../Common/Input_Field/InputField";
+import InputField from "../Common/InputField/InputField";
 import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
 
 const RightSection = () => {
