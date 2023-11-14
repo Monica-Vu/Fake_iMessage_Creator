@@ -8,10 +8,10 @@ import RightSection from '../RightSection/RightSection';
 const Grid: React.FC = () => {
     return(
         <div className="grid-container">
-            <div className="grid-item"> 
+            <div className="grid-item align-right"> 
             <Download />           
              </div>
-            <div className="grid-item"> 
+            <div className="grid-item align-left"> 
             <RightSection /> 
             </div>
         </div>
