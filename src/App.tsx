@@ -25,7 +25,7 @@ function App() {
 
         FakeChatCreator is not affiliated with Apple, iPhone, iMessage, or iPhone Text Messages or responsible for any user generated content.
         <br /> 
-        Please only use this for creating fictional stories (ex/ smau, text scenario, anything similar of those sorts).
+        Please only use this for creating fictional stories (ex/ smau, text scenario, anything similar of those sorts). Thank you for your understanding. 
         </p>
       </div>
       </MessagesContext.Provider>
