@@ -16,6 +16,10 @@ const RightSection = () => {
   const { time, setTime } = React.useContext(TimeContext) as TimeType
   const [dateDivider, setDateDivision] = useState<string>("");
 
+  const AddContactObject = () => {
+
+  }
+
   const handleImageMessageSubmit = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
@@ -93,8 +97,6 @@ const RightSection = () => {
 
   return (
     <div>
-      <h1 className="title">Contacts</h1>
-      <ProfilePictureUpload />
       <h1 className="title">Message</h1>
       <TextArea text={message} onChange={handleMessageChange} />
       {imageAttachment && <ImageCrop file={imageAttachment} width="63px" height="63px" borderRadius="10%" />}
@@ -110,8 +112,6 @@ const RightSection = () => {
           style={{ display: "none" }}
         />
       </div>
-      <h1 className="title">Current Time</h1>
-      <InputField value={time} attribute="time" onChange={handleTimeChange} />
       <h1 className="title">Date Divider</h1>
       <InputField value={dateDivider} attribute="date divider" onChange={handleDateDividerChange} />
       <div className="left-item">
@@ -121,6 +121,15 @@ const RightSection = () => {
       <div className="left-item">
         <Button text="Edit Mode" colour={"orange"} padding={"10px"} onClick={handleEditSubmit} margin="5px 0px" />
       </div>
+      <h1 className="title">Contacts</h1>
+      <ProfilePictureUpload />
+      <ProfilePictureUpload />
+      <ProfilePictureUpload />
+      <ProfilePictureUpload />
+      <ProfilePictureUpload />
+      <Button text="Add Contact" padding={"10px"} onClick={AddContactObject} /> 
+      <h1 className="title">Current Time</h1>
+      <InputField value={time} attribute="time" onChange={handleTimeChange} />
     </div>
   );
 };

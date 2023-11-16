@@ -35,7 +35,7 @@ const EditList: React.FC = ({ }) => {
     }
 
     return (
-        <div>
+        <div className="list">
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="messages">
                     {(provided) => (
@@ -64,8 +64,10 @@ const EditList: React.FC = ({ }) => {
                         </div>)}
                 </Droppable>
             </DragDropContext >
-            <Button text="Update" onClick={handleUpdateList} />
-            <Button text="Cancel" onClick={handleCancelEditList} />
+            <div className="controls">
+                <Button text="Update" onClick={handleUpdateList} />
+                <Button text="Cancel" onClick={handleCancelEditList} />
+            </div>
         </div>
     )
 }
