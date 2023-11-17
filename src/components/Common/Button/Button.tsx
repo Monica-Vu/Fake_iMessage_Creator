@@ -9,6 +9,7 @@ interface ButtonProps {
   fontColour?: string;
   padding?: string;
   margin?: string;
+  alignSelf?: string;
   onClick?: () => void;
 }
 
@@ -18,6 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   padding,
   margin,
   fontColour,
+  alignSelf,
   onClick,
 }) => {
   const buttonStyle: React.CSSProperties = {
@@ -25,7 +27,9 @@ const Button: React.FC<ButtonProps> = ({
     color: fontColour || "#fff",
     padding: padding || DEFAULT_SPACING,
     margin: margin || DEFAULT_SPACING,
+    alignSelf: alignSelf|| "auto",
     cursor: onClick ? "pointer" : "default",
+   
   };
 
   return (

@@ -3,12 +3,12 @@ import Button from "../Common/Button/Button";
 import MessagesContext, { MessagesType, Message } from "../../context/MessageContext/MessageContext";
 import TextArea from "../Common/TextArea/TextArea";
 import ProfilePictureUpload from '../ProfilePictureUpload/ProfilePictureUpload';
-import "./RightSection.css"
+import "./CreationSection.css"
 import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import InputField from "../Common/InputField/InputField";
 import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
 
-const RightSection = () => {
+const CreationSection = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [message, setMessage] = useState('');
   const [imageAttachment, setImageAttachment] = useState<File | null>(null);
@@ -134,4 +134,4 @@ const RightSection = () => {
   );
 };
 
-export default RightSection;
+export default CreationSection;
