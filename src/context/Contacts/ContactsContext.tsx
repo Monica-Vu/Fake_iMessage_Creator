@@ -1,16 +1,18 @@
 import { createContext } from "react";
 
 export type Contact = {
-    id: string,
+    id: number,
     name: string,
     image?: File
 }
 
 export type ContactType = {
-    contacts: Contact[] | null;
-    setContacts: (contacts: Contact[] | null) => void;
+    contacts: Contact[] | [];
+    setContacts: (contacts: Contact[] | []) => void;
+    updateImage: (id: number, image: File) => void;
+    updateName: (id: number, name: string) => void;
 }
 
-const ContactsContext = createContext<ContactType | null>(null)
+const ContactsContext = createContext<ContactType | []>([])
 
 export default ContactsContext;

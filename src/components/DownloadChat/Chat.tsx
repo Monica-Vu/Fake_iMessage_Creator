@@ -8,6 +8,7 @@ import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import MessagesContext, { MessagesType } from "../../context/MessageContext/MessageContext";
 import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
 import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
+import ContactsContext, {ContactType, Contact } from "../../context/Contacts/ContactsContext";
 
 import barsImage from "../../images/bars.png";
 import wifiImage from "../../images/wifi.png"
@@ -30,10 +31,11 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   const { profilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
   const { messages, isEditing, setIsEditing } = React.useContext(MessagesContext) as MessagesType;
   const { contactName } = React.useContext(ContactNameContext) as ContactNameType;
+  const { contacts, setContacts } = React.useContext(ContactsContext) as ContactType
   const { time } = React.useContext(TimeContext) as TimeType;
 
   if (isEditing) {
-    return <EditList /> 
+    return <EditList />
   }
 
   return (
@@ -53,18 +55,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           <img src={backArrowImage} alt="back-arrow" width="35px" height="35px" />
         </div>
         <div id="contact-image">
-          {profilePicture ? (
-            <ImageCrop file={profilePicture} width="63px" height="63px" borderRadius="50%" />
-          ) : (
-            <img
-              src={unknownPersonImage}
-              alt="Unknown Person"
-              width="63px"
-              height="63px"
-              border-radius="50%"
-            />
-          )}
-
+          {contacts?.map((contact) => <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%"/> )}
         </div>
 
       </div>
@@ -75,8 +66,8 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           const removeTail = () => {
             if (index <= messages.length - 2) {
               if (
-                messages[index].hasOwnProperty("text") && 
-                messages[index + 1].hasOwnProperty("text") && 
+                messages[index].hasOwnProperty("text") &&
+                messages[index + 1].hasOwnProperty("text") &&
                 messages[index].sender === messages[index + 1].sender
               ) {
                 return true;
@@ -112,7 +103,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
       <div id="footer">
         <img src={CameraImage} />
         <img src={AppIconImage} />
-          <img src={ChatImage} />
+        <img src={ChatImage} />
       </div>
     </div>
   );

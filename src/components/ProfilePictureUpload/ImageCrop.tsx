@@ -3,7 +3,7 @@ import "react-image-crop/dist/ReactCrop.css";
 import "./ImageCrop.css"
 
 interface ImageCropProps {
-  file: File;
+  file?: File;
   width?: string;
   height?: string;
   borderRadius?: string;
@@ -17,12 +17,12 @@ function ImageCrop({ file, width, height, borderRadius, left }: ImageCropProps):
     borderRadius: borderRadius || "0%",
   }
 
-  return file && (
+  return file? (
     <img
       src={URL.createObjectURL(file)}
       style={imageStyle}
     />
-  )
+  ) : <div> </div>
 }
 
 export default ImageCrop;

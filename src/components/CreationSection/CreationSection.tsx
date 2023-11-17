@@ -7,17 +7,22 @@ import "./CreationSection.css"
 import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import InputField from "../Common/InputField/InputField";
 import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
+import ContactsContext, {ContactType, Contact } from "../../context/Contacts/ContactsContext";
 
 const CreationSection = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [message, setMessage] = useState('');
   const [imageAttachment, setImageAttachment] = useState<File | null>(null);
   const { messages, setMessages, isEditing, setIsEditing } = React.useContext(MessagesContext) as MessagesType
+  const { contacts, setContacts } = React.useContext(ContactsContext) as ContactType
   const { time, setTime } = React.useContext(TimeContext) as TimeType
   const [dateDivider, setDateDivision] = useState<string>("");
 
   const AddContactObject = () => {
-
+    setContacts([
+      ...contacts,
+      { id: contacts.length, name: "" }
+    ])
   }
 
   const handleImageMessageSubmit = () => {
@@ -122,11 +127,8 @@ const CreationSection = () => {
         <Button text="Edit Mode" colour={"orange"} padding={"10px"} onClick={handleEditSubmit} margin="5px 0px" />
       </div>
       <h1 className="title">Contacts</h1>
-      <ProfilePictureUpload />
-      <ProfilePictureUpload />
-      <ProfilePictureUpload />
-      <ProfilePictureUpload />
-      <ProfilePictureUpload />
+      {contacts?.map(({id}) => <ProfilePictureUpload id={id} />)}
+    
       <Button text="Add Contact" padding={"10px"} onClick={AddContactObject} /> 
       <h1 className="title">Current Time</h1>
       <InputField value={time} attribute="time" onChange={handleTimeChange} />
