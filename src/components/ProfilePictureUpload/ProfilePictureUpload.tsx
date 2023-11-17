@@ -6,6 +6,7 @@ import "./ProfilePictureUpload.css"
 import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
 import InputField from "../Common/InputField/InputField";
 import ContactsContext, { ContactType } from "../../context/Contacts/ContactsContext";
+import unknownPersonImage from "../../images/unknown_person.svg";
 
 type ProfilePictureProps = {
   id: number
@@ -35,14 +36,20 @@ const ProfilePictureUpload: React.FC<ProfilePictureProps> = ({ id }) => {
     }
   };
 
-  const doesImage = contacts[id].image 
+  const doesImage = contacts[id].image
 
   return (
     <div className="flex-grid">
       <div className="col">
         {doesImage ? (
-          <ImageCrop file={doesImage} width="63px" height="63px" borderRadius="50%"/>
-        ) : (<h6> No Profile Picture </h6>)}
+          <ImageCrop file={doesImage} width="63px" height="63px" borderRadius="50%" />
+        ) : (<img
+        src={unknownPersonImage}
+        alt="Unknown Person"
+        width="63px"
+        height="63px"
+        border-radius="50%"
+      />)}
         <div className="col"> 
         <Button text="Upload" onClick={handleButtonClick} />
         <input

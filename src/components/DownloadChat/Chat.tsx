@@ -8,7 +8,7 @@ import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import MessagesContext, { MessagesType } from "../../context/MessageContext/MessageContext";
 import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
 import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
-import ContactsContext, {ContactType, Contact } from "../../context/Contacts/ContactsContext";
+import ContactsContext, { ContactType, Contact } from "../../context/Contacts/ContactsContext";
 
 import barsImage from "../../images/bars.png";
 import wifiImage from "../../images/wifi.png"
@@ -55,7 +55,13 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           <img src={backArrowImage} alt="back-arrow" width="35px" height="35px" />
         </div>
         <div id="contact-image">
-          {contacts?.map((contact) => <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%"/> )}
+          {contacts?.map((contact) => contact.image ? <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" /> : (<img
+            src={unknownPersonImage}
+            alt="Unknown Person"
+            width="63px"
+            height="63px"
+            border-radius="50%"
+          />))}
         </div>
 
       </div>
