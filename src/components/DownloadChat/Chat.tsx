@@ -51,7 +51,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         </div>
       </div>
       <div id="contact">
-        <div className="left" style={{ paddingTop: "15px" }}>
+        <div id="arrow" style={{ paddingTop: "15px" }}>
           <img src={backArrowImage} alt="back-arrow" width="35px" height="35px" />
         </div>
         <div id="contact-image">

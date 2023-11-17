@@ -45,7 +45,8 @@
   padding-top: 10px;
   background-color: #ecedf0;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  position: relative;
 }
 
 #contact-name {
@@ -54,12 +55,19 @@
 }
 
 #contact-image {
-  padding-left: 120px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .left {
   display: flex;
   padding-left: 10px;
+}
+
+#arrow {
+  position: absolute;
+  left: 0;
 }
 
 .right {
