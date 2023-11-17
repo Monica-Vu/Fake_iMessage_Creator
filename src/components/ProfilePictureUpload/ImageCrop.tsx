@@ -17,11 +17,49 @@ function ImageCrop({ file, width, height, borderRadius, left }: ImageCropProps):
     borderRadius: borderRadius || "0%",
   }
 
-  return file? (
-    <img
-      src={URL.createObjectURL(file)}
-      style={imageStyle}
-    />
+  return file ? (
+    <div className="parent">
+      <img
+        src={URL.createObjectURL(file)}
+        className="image one"
+      />
+      <img
+        src={URL.createObjectURL(file)}
+        className="image two"
+      />
+      <img
+        src={URL.createObjectURL(file)}
+        className="image three"
+      />
+      <img
+        src={URL.createObjectURL(file)}
+        className="image four"
+      />
+      <img
+        src={URL.createObjectURL(file)}
+        className="image five"
+      />
+      <img
+        src={URL.createObjectURL(file)}
+        className="image six"
+      />
+      <img
+        src={URL.createObjectURL(file)}
+        className="image seven"
+      />
+      <img
+        src={URL.createObjectURL(file)}
+        className="image eight"
+      />
+      {/* <img
+        src={URL.createObjectURL(file)}
+        className="image nine"
+      />
+      <img
+        src={URL.createObjectURL(file)}
+        className="image ten"
+      /> */}
+    </div>
   ) : <div> </div>
 }
 

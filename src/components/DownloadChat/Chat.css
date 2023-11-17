@@ -47,6 +47,8 @@
   display: flex;
   justify-content: center;
   position: relative;
+  width: 100%; 
+  align-items: flex-start;
 }
 
 #contact-name {
@@ -54,11 +56,11 @@
   background-color: #ecedf0;
 }
 
-#contact-image {
+/* #contact-image {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
+} */
 
 .left {
   display: flex;
