@@ -1,15 +1,10 @@
-.parent {
+/* .parent {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-start; 
   width: 100%;
-}
-
-.child {
-  display: flex;
-  align-self: center;
-}
+} */
 
 .left {
   flex-flow: flex-end;

@@ -56,11 +56,12 @@
   background-color: #ecedf0;
 }
 
-/* #contact-image {
-  display: flex;
-  justify-content: flex-end;
+#contact-image {
+  position: relative;
+  justify-content: center;
+  align-self: center;
   align-items: center;
-} */
+}
 
 .left {
   display: flex;

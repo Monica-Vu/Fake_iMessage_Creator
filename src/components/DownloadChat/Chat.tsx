@@ -38,6 +38,10 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
     return <EditList />
   }
 
+  const contactImageStyle: React.CSSProperties = {
+    transform: `translate(-${(((contacts.length - 1) * 30 + (63 / 2)) / 3) + 4}px, 0)`
+  }
+
   return (
     <div className="capture-element" ref={chatRef}>
       <div id="header-container">
@@ -54,14 +58,28 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         <div id="arrow" style={{ paddingTop: "15px" }}>
           <img src={backArrowImage} alt="back-arrow" width="35px" height="35px" />
         </div>
-        <div id="contact-image">
-          {contacts?.map((contact) => contact.image ? <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" /> : (<img
-            src={unknownPersonImage}
-            alt="Unknown Person"
-            width="63px"
-            height="63px"
-            border-radius="50%"
-          />))}
+        <div id="contact-image" style={contactImageStyle}>
+          {contacts?.map((contact, index) => {
+            console.log("contact =>", contact.id);
+            const position = index === 0 ? "relative" : undefined;
+            const left = index === 0 ? 0 : index * 30;
+
+            return contact.image ?
+            // const spacing = 30
+              // if (index=== 0) {
+                // <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" position: "relative" />
+              // } else {
+                // <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" left: index * 30 />
+              // }
+              <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" multiPicture={contacts.length > 1} position={position} left={left} />
+              :
+              (<img
+                src={unknownPersonImage}
+                alt="Unknown Person"
+                width="63px"
+                height="63px"
+                border-radius="50%" />);
+          })}
         </div>
 
       </div>
