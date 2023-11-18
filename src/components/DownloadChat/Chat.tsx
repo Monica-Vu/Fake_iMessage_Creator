@@ -39,7 +39,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   }
 
   const contactImageStyle: React.CSSProperties = {
-    transform: `translate(-${(((contacts.length - 1) * 30 + (63 / 2)) / 3) + 4}px, 0)`
+    transform: `translate(-${(((contacts.length - 1) * 30 + (63 / 2)) / 3) + (contacts.length * 0.70)}px, 0)`
   }
 
   return (
@@ -59,7 +59,8 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           <img src={backArrowImage} alt="back-arrow" width="35px" height="35px" />
         </div>
         <div id="contact-image" style={contactImageStyle}>
-          {contacts?.map((contact, index) => {
+          
+          {contacts.slice(0, 7).map((contact, index) => {
             console.log("contact =>", contact.id);
             const position = index === 0 ? "relative" : undefined;
             const left = index === 0 ? 0 : index * 30;
@@ -83,7 +84,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         </div>
 
       </div>
-      <p id="contact-name"> {contactName}  <img src={moreArrowImage} alt="more-arrow" height="12px" width="12px" /> </p>
+      <p id="contact-name"> {contactName || "Group Name"}  <img src={moreArrowImage} alt="more-arrow" height="12px" width="12px" /> </p>
 
       <div id="chat">
         {messages?.map((bubble, index) => {
