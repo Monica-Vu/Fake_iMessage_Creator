@@ -25,7 +25,7 @@ const CaptureElementAsImage: React.FC = () => {
       <Button 
         text="Capture"
         onClick={handleCaptureClick}
-        alignSelf="center" />
+        alignSelf="flex-end" />
     </>
   );
 };
