@@ -8,6 +8,7 @@ import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import InputField from "../Common/InputField/InputField";
 import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
 import ContactsContext, {ContactType, Contact } from "../../context/Contacts/ContactsContext";
+import CustomDropdown from "../Common/Dropdown/Dropdown";
 
 const CreationSection = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -99,7 +100,8 @@ const CreationSection = () => {
     setIsEditing(!isEditing);
   }
 
-
+// the custom dropdown is causing the height of the chat box to increase and i have no idea why
+// there is no dropdown menu from React 
   return (
     <div>
       <h1 className="title">Message</h1>
@@ -108,6 +110,7 @@ const CreationSection = () => {
       <div className="left-item">
         <Button text="Send" onClick={handleSendButtonSubmit} margin="5px 0"/>
         <Button text="Received" onClick={handleReceivedButtonSubmit} />
+        <CustomDropdown id="ContactName" /> 
         <Button text="Image" onClick={handleImageMessageSubmit} margin="5px 0 5px 50px" colour="orange"/>
         <input
           type="file"
@@ -117,6 +120,7 @@ const CreationSection = () => {
           style={{ display: "none" }}
         />
       </div>
+
       <h1 className="title">Date Divider</h1>
       <InputField value={dateDivider} attribute="date divider" onChange={handleDateDividerChange} />
       <div className="left-item">

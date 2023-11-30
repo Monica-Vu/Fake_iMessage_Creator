@@ -1,0 +1,17 @@
+#basic-button {
+    font-family: 'Helvetica', 'Roboto', 'Arial';
+    border: none;
+    background-color: #4d95f7;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    align-self: "auto";
+    border-radius: 0%;
+    height: 25px;
+    text-transform: capitalize;
+    font-weight: 350;
+}
+
+#basic-menu {
+    
+}

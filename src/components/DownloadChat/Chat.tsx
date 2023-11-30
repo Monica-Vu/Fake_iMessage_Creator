@@ -49,9 +49,9 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           <h6 id="time"> {time}</h6>
         </div>
         <div className="right">
-          <img src={barsImage} alt="signal-strength" />
-          <img src={wifiImage} alt="wifi" />
-          <img src={batteryImage} alt="battery" />
+          <img src={barsImage} width="15px" height="12px" alt="signal-strength" />
+          <img src={wifiImage} width="16px" height="12px"alt="wifi" />
+          <img src={batteryImage} width="21px" height="12px" alt="battery" />
         </div>
       </div>
       <div id="contact">
