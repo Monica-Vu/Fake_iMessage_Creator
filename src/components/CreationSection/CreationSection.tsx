@@ -99,7 +99,26 @@ const CreationSection = () => {
     setIsEditing(!isEditing);
   }
 
-  const contactNames = contacts?.map((contact) => contact.name)
+  const handleSelectReceiver = (contactId: number) => {
+    console.log(`contactId in handle`, contactId)
+    const newMessage: Message = {
+      id: crypto.randomUUID(),
+      sender: false,
+      contactId,
+      ...(message && { text: message }),
+      ...(imageAttachment && { image: imageAttachment }),
+      // ...(contactId && { contactId: contacts[contactId].id })
+      // ...(contactId && { contactId })
+    }
+    console.log("Creating new message", newMessage);
+
+    setMessages([
+      ...messages || [],
+      newMessage
+    ])
+    setMessage("")
+    setImageAttachment(null)
+  }
 
 // the custom dropdown is causing the height of the chat box to increase and i have no idea why
 // there is no dropdown menu from React 
@@ -111,7 +130,7 @@ const CreationSection = () => {
       <div className="left-item">
         <Button text="Send" onClick={handleSendButtonSubmit} margin="5px 0"/>
         <Button text="Received" onClick={handleReceivedButtonSubmit} />
-        <CustomDropdown label="Receiver" id="ContactName" options={contactNames} /> 
+        <CustomDropdown label="Receiver" id="ContactName" options={contacts} menuItemHandler={handleSelectReceiver} /> 
         <Button text="Image" onClick={handleImageMessageSubmit} margin="5px 0 5px 50px" colour="orange"/>
         <input
           type="file"

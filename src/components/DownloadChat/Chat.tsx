@@ -50,7 +50,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         </div>
         <div className="right">
           <img src={barsImage} width="15px" height="12px" alt="signal-strength" />
-          <img src={wifiImage} width="16px" height="12px"alt="wifi" />
+          <img src={wifiImage} width="16px" height="12px" alt="wifi" />
           <img src={batteryImage} width="21px" height="12px" alt="battery" />
         </div>
       </div>
@@ -59,18 +59,17 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           <img src={backArrowImage} alt="back-arrow" width="35px" height="35px" />
         </div>
         <div id="contact-image" style={contactImageStyle}>
-          
+
           {contacts.slice(0, 7).map((contact, index) => {
-            console.log("contact =>", contact.id);
             const position = index === 0 ? "relative" : undefined;
             const left = index === 0 ? 0 : index * 30;
 
             return contact.image ?
-            // const spacing = 30
+              // const spacing = 30
               // if (index=== 0) {
-                // <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" position: "relative" />
+              // <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" position: "relative" />
               // } else {
-                // <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" left: index * 30 />
+              // <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" left: index * 30 />
               // }
               <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" multiPicture={contacts.length > 1} position={position} left={left} />
               :
@@ -100,22 +99,34 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
             }
           };
 
+          console.log(`bubble: `, bubble)
+
+          const contactIdExists = bubble.contactId != null
+
           if (bubble.image) {
             if (bubble.sender) {
               return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
             } else {
-              return <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
+              return (
+                <>
+                  {contactIdExists && <div className="left"> <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p></div>}
+                  <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
+                </>
+            )
             }
           }
 
           if (bubble.text) {
             return (
-              <SpeechBubble
-                key={index}
-                sender={bubble.sender}
-                text={bubble.text}
-                removeTail={removeTail()}
-              />
+              <>
+                {contactIdExists && <div className="left"> <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p></div>}
+                <SpeechBubble
+                  key={index}
+                  sender={bubble.sender}
+                  text={bubble.text}
+                  removeTail={removeTail()}
+                />
+              </>
             );
           }
 
