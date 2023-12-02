@@ -3,6 +3,9 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  max-height: 790px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .controls {
