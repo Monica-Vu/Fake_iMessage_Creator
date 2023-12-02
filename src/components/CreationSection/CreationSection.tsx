@@ -96,9 +96,10 @@ const CreationSection = () => {
   };
 
   const handleEditSubmit = () => {
-
     setIsEditing(!isEditing);
   }
+
+  const contactNames = contacts?.map((contact) => contact.name)
 
 // the custom dropdown is causing the height of the chat box to increase and i have no idea why
 // there is no dropdown menu from React 
@@ -110,7 +111,7 @@ const CreationSection = () => {
       <div className="left-item">
         <Button text="Send" onClick={handleSendButtonSubmit} margin="5px 0"/>
         <Button text="Received" onClick={handleReceivedButtonSubmit} />
-        <CustomDropdown id="ContactName" /> 
+        <CustomDropdown label="Receiver" id="ContactName" options={contactNames} /> 
         <Button text="Image" onClick={handleImageMessageSubmit} margin="5px 0 5px 50px" colour="orange"/>
         <input
           type="file"
@@ -132,7 +133,6 @@ const CreationSection = () => {
       </div>
       <h1 className="title">Contacts</h1>
       {contacts?.map(({id}) => <ProfilePictureUpload id={id} />)}
-    
       <Button text="Add Contact" padding={"10px"} onClick={AddContactObject} /> 
       <h1 className="title">Current Time</h1>
       <InputField value={time} attribute="time" onChange={handleTimeChange} />

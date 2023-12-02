@@ -6,11 +6,12 @@ import MenuItem from '@mui/material/MenuItem';
 import "./Dropdown.css"
 
 interface DropdownProps {
+  label: string,
   options?: Array<String>
   id: string
 }
 
-const CustomDropdown: React.FC<DropdownProps> = ({ options, id }) => {
+const CustomDropdown: React.FC<DropdownProps> = ({ label, options, id }) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -19,6 +20,8 @@ const CustomDropdown: React.FC<DropdownProps> = ({ options, id }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  console.log("options =>", options)
 
   return (
     <div>
@@ -29,7 +32,7 @@ const CustomDropdown: React.FC<DropdownProps> = ({ options, id }) => {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        Receiver
+        {label}
       </Button>
       <Menu
         id="basic-menu"
@@ -40,9 +43,7 @@ const CustomDropdown: React.FC<DropdownProps> = ({ options, id }) => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        {options?.map((option) => <MenuItem onClick={handleClose}>{option}</MenuItem>)}
       </Menu>
     </div>
   );
