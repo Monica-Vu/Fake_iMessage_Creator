@@ -30,9 +30,6 @@ function ImageCrop({ file, width, height, borderRadius, multiPicture, index, pos
     left: left ? left + "px" : 0,
   }
 
-  if (multiPicture) {
-    console.log("multiPictureStyle =>", multiPictureStyle)
-  }
   return file ? (
    
       <img

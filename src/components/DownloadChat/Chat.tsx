@@ -100,35 +100,13 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
             }
           };
 
-          console.log(`bubble: `, bubble)
+          // TODO: add logic to check if the contact name is the same as the previous, remove the profile picture 
 
           const contactIdExists = bubble.contactId != null
 
-          /*
-          code to refer to
-                      if (contactsLengthGreaterThanOne && (!bubble.sender)) {
-              return (
-                <>
-                    <div className="messageContainer">
-                      <div className="messagePfp">
-                        {contactIdExists && <ImageCrop file={contacts[bubble.contactId || 0].image} width="38px" height="38px" borderRadius="100%" />}
-                      </div>
-                      <div className="context">
-                      {contactIdExists && <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p>}
-                      <SpeechBubble
-                        key={index}
-                        sender={bubble.sender}
-                        text={bubble.text}
-                        removeTail={removeTail()}
-                      />
-                       </div>
-                    </div>
-                </>
-          */
-
           if (bubble.image) {
             if (bubble.sender) {
-              return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
+              return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="30%" height="30%" borderRadius="20%" /></div>
             } else {
               if (contactsLengthGreaterThanOne) {
                 return (
