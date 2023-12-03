@@ -97,4 +97,22 @@
   color: #8E8E8E;
   font-weight: 600;
   font-size: 12px;
+  text-align: left;
+  padding-left: 13px;
+}
+
+.messageContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.messagePfp {
+  justify-content: flex-end;
+  z-index: 9999;
+}
+
+.context {
+  flex-direction: column;
 }

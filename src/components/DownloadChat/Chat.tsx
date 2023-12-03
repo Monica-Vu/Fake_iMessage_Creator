@@ -33,6 +33,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   const { contactName } = React.useContext(ContactNameContext) as ContactNameType;
   const { contacts, setContacts } = React.useContext(ContactsContext) as ContactType
   const { time } = React.useContext(TimeContext) as TimeType;
+  const contactsLengthGreaterThanOne = contacts.length > 1;
 
   if (isEditing) {
     return <EditList />
@@ -112,23 +113,46 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
                   {contactIdExists && <div className="left"> <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p></div>}
                   <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
                 </>
-            )
+              )
             }
           }
 
           if (bubble.text) {
-            return (
-              <>
-                {contactIdExists && <div className="left"> <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p></div>}
-                <SpeechBubble
-                  key={index}
-                  sender={bubble.sender}
-                  text={bubble.text}
-                  removeTail={removeTail()}
-                />
-              </>
-            );
+            console.log("contactsLengthGreaterThanOne =>", contactsLengthGreaterThanOne)
+            if (contactsLengthGreaterThanOne && (!bubble.sender)) {
+              return (
+                <>
+                    <div className="messageContainer">
+                      <div className="messagePfp">
+                        {contactIdExists && <ImageCrop file={contacts[bubble.contactId || 0].image} width="38px" height="38px" borderRadius="100%" />}
+                      </div>
+                      <div className="context">
+                      {contactIdExists && <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p>}
+                      <SpeechBubble
+                        key={index}
+                        sender={bubble.sender}
+                        text={bubble.text}
+                        removeTail={removeTail()}
+                      />
+                       </div>
+                    </div>
+                </>
+              );
+            } else {
+              return (
+                <>
+                  <SpeechBubble
+                    key={index}
+                    sender={bubble.sender}
+                    text={bubble.text}
+                    removeTail={removeTail()}
+                  />
+                </>
+              )
+            }
           }
+
+          // end of bubble.text
 
           if (bubble.date) {
             return (<h6 key={bubble.id} className="time-divider">{bubble.date}</h6>)
