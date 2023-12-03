@@ -104,22 +104,9 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
 
           const contactIdExists = bubble.contactId != null
 
-          if (bubble.image) {
-            if (bubble.sender) {
-              return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
-            } else {
-              return (
-                <>
-                  {contactIdExists && <div className="left"> <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p></div>}
-                  <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
-                </>
-              )
-            }
-          }
-
-          if (bubble.text) {
-            console.log("contactsLengthGreaterThanOne =>", contactsLengthGreaterThanOne)
-            if (contactsLengthGreaterThanOne && (!bubble.sender)) {
+          /*
+          code to refer to
+                      if (contactsLengthGreaterThanOne && (!bubble.sender)) {
               return (
                 <>
                     <div className="messageContainer">
@@ -136,6 +123,50 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
                       />
                        </div>
                     </div>
+                </>
+          */
+
+          if (bubble.image) {
+            if (bubble.sender) {
+              return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="20%" height="20%" borderRadius="20%" /></div>
+            } else {
+              if (contactsLengthGreaterThanOne) {
+                return (
+                  <div className="messageContainer">
+                    <div className="messagePfp">
+                      {contactIdExists && <ImageCrop file={contacts[bubble.contactId || 0].image} width="38px" height="38px" borderRadius="100%" />}
+                    </div>
+                    <div className="context">
+                      {contactIdExists && <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p>}
+                      <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="30%" height="30%" borderRadius="20%" /></div>
+                    </div>
+                  </div>
+                )
+              } else {
+                return (<div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="30%" height="30%" borderRadius="20%" /></div>)
+              }
+            }
+          }
+
+          if (bubble.text) {
+            console.log("contactsLengthGreaterThanOne =>", contactsLengthGreaterThanOne)
+            if (contactsLengthGreaterThanOne && (!bubble.sender)) {
+              return (
+                <>
+                  <div className="messageContainer">
+                    <div className="messagePfp">
+                      {contactIdExists && <ImageCrop file={contacts[bubble.contactId || 0].image} width="38px" height="38px" borderRadius="100%" />}
+                    </div>
+                    <div className="context">
+                      {contactIdExists && <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p>}
+                      <SpeechBubble
+                        key={index}
+                        sender={bubble.sender}
+                        text={bubble.text}
+                        removeTail={removeTail()}
+                      />
+                    </div>
+                  </div>
                 </>
               );
             } else {
