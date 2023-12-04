@@ -88,19 +88,27 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
 
       <div id="chat">
         {messages?.map((bubble, index) => {
+          const sameContactId = messages[index + 1].contactId === messages[index].contactId
+
           const removeTail = () => {
             if (index <= messages.length - 2) {
-              if (
-                messages[index].hasOwnProperty("text") &&
-                messages[index + 1].hasOwnProperty("text") &&
-                messages[index].sender === messages[index + 1].sender
+              if (messages[index].hasOwnProperty("text") &&
+                messages[index + 1].hasOwnProperty("text")
               ) {
-                return true;
+                if (messages[index].sender === messages[index + 1].sender) {
+                  if (messages[index].sender) {
+                    return true
+                  } else {
+                    if (sameContactId) {
+                      return true
+                    } else {
+                      return false
+                    }
+                  }
+                }
               }
             }
           };
-
-          // TODO: add logic to check if the contact name is the same as the previous, remove the profile picture 
 
           const contactIdExists = bubble.contactId != null
 
