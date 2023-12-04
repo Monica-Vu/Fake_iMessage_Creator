@@ -106,10 +106,22 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
                 }
               }
             }
+            return false;
           };
+
+          const removeName = () => {
+            if (index >= 1 && contactsLengthGreaterThanOne) {
+              if (messages[index]?.contactId === messages[index - 1]?.contactId) {
+                return true
+              } else {
+                return false
+              }
+            }
+          }
 
           const contactIdExists = bubble.contactId != null
 
+          // TODO: check if contact name eis twice in a row for 
           if (bubble.image) {
             if (bubble.sender) {
               return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="30%" height="30%" borderRadius="20%" /></div>
@@ -133,16 +145,15 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           }
 
           if (bubble.text) {
-            console.log("contactsLengthGreaterThanOne =>", contactsLengthGreaterThanOne)
             if (contactsLengthGreaterThanOne && (!bubble.sender)) {
               return (
                 <>
                   <div className="messageContainer">
                     <div className="messagePfp">
-                      {contactIdExists && <ImageCrop file={contacts[bubble.contactId || 0].image} width="38px" height="38px" borderRadius="100%" />}
+                      {contactIdExists && <ImageCrop file={contacts[bubble.contactId || 0].image} width="38px" height="38px" borderRadius="100%" visibility={(removeTail()) ? "hidden" : "visible"} />}
                     </div>
                     <div className="context">
-                      {contactIdExists && <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p>}
+                      {contactIdExists && !removeName() && <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p>}
                       <SpeechBubble
                         key={index}
                         sender={bubble.sender}

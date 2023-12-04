@@ -111,8 +111,13 @@
 .messagePfp {
   justify-content: flex-end;
   z-index: 9999;
+  position: relative;
 }
 
 .context {
   flex-direction: column;
+}
+
+.hidden {
+  display: none;
 }
