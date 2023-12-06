@@ -9,6 +9,7 @@ import InputField from "../Common/InputField/InputField";
 import TimeContext, { TimeType } from "../../context/TimeContext/TimeContext";
 import ContactsContext, {ContactType, Contact } from "../../context/Contacts/ContactsContext";
 import CustomDropdown from "../Common/Dropdown/Dropdown";
+import ContactNameContext, { ContactNameType } from "../../context/ContactNameContext/ContactNameContext";
 
 const CreationSection = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -18,12 +19,17 @@ const CreationSection = () => {
   const { contacts, setContacts } = React.useContext(ContactsContext) as ContactType
   const { time, setTime } = React.useContext(TimeContext) as TimeType
   const [dateDivider, setDateDivision] = useState<string>("");
+  const { contactName, setContactName } = React.useContext(ContactNameContext) as ContactNameType;
 
   const AddContactObject = () => {
     setContacts([
       ...contacts,
       { id: contacts.length, name: "" }
     ])
+  }
+
+  const setGroupChatName = (newValue: string) => {
+    setContactName(newValue)
   }
 
   const handleImageMessageSubmit = () => {
@@ -100,15 +106,12 @@ const CreationSection = () => {
   }
 
   const handleSelectReceiver = (contactId: number) => {
-    console.log(`contactId in handle`, contactId)
     const newMessage: Message = {
       id: crypto.randomUUID(),
       sender: false,
       contactId,
       ...(message && { text: message }),
       ...(imageAttachment && { image: imageAttachment }),
-      // ...(contactId && { contactId: contacts[contactId].id })
-      // ...(contactId && { contactId })
     }
 
     setMessages([
@@ -119,8 +122,6 @@ const CreationSection = () => {
     setImageAttachment(null)
   }
 
-// the custom dropdown is causing the height of the chat box to increase and i have no idea why
-// there is no dropdown menu from React 
   return (
     <div>
       <h1 className="title">Message</h1>
@@ -128,8 +129,7 @@ const CreationSection = () => {
       {imageAttachment && <ImageCrop file={imageAttachment} width="63px" height="63px" borderRadius="10%" />}
       <div className="left-item">
         <Button text="Send" onClick={handleSendButtonSubmit} margin="5px 0"/>
-        <Button text="Received" onClick={handleReceivedButtonSubmit} />
-        <CustomDropdown label="Receiver" id="ContactName" options={contacts} menuItemHandler={handleSelectReceiver} /> 
+        <CustomDropdown label="Receiver" id="ContactNames" options={contacts} menuItemHandler={handleSelectReceiver} /> 
         <Button text="Image" onClick={handleImageMessageSubmit} margin="5px 0 5px 50px" colour="orange"/>
         <input
           type="file"
@@ -145,6 +145,8 @@ const CreationSection = () => {
       <div className="left-item">
         <Button text="Submit" onClick={handleDateDividerSubmit} margin="5px 0px" />
       </div>
+      <h1 className="title">Group Chat Name</h1>
+      <InputField value={contactName} attribute="group chat name" onChange={setGroupChatName} />
       <br />
       <div className="left-item">
         <Button text="Edit Mode" colour={"orange"} padding={"10px"} onClick={handleEditSubmit} margin="5px 0px" />

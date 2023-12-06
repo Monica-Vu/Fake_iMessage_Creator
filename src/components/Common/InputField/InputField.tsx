@@ -5,12 +5,14 @@ interface InputFieldProps {
   attribute: string;
   value: string;
   onChange: (newValue: string) => void;
+  disabled?: () => void;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
   attribute,
   value,
-  onChange
+  onChange,
+  disabled
 }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;

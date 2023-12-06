@@ -31,7 +31,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   const { profilePicture } = React.useContext(ProfilePictureContext) as ProfilePictureType;
   const { messages, isEditing, setIsEditing } = React.useContext(MessagesContext) as MessagesType;
   const { contactName } = React.useContext(ContactNameContext) as ContactNameType;
-  const { contacts, setContacts } = React.useContext(ContactsContext) as ContactType
+  const { contacts } = React.useContext(ContactsContext) as ContactType
   const { time } = React.useContext(TimeContext) as TimeType;
   const contactsLengthGreaterThanOne = contacts.length > 1;
 
@@ -43,6 +43,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
     transform: `translate(-${(((contacts.length - 1) * 30 + (63 / 2)) / 3) + (contacts.length * 0.70)}px, 0)`
   }
 
+  console.log("contactsLengthGreaterThanOne =>", contactsLengthGreaterThanOne)
   return (
     <div className="capture-element" ref={chatRef}>
       <div id="header-container">
@@ -66,12 +67,6 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
             const left = index === 0 ? 0 : index * 30;
 
             return contact.image ?
-              // const spacing = 30
-              // if (index=== 0) {
-              // <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" position: "relative" />
-              // } else {
-              // <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" left: index * 30 />
-              // }
               <ImageCrop file={contact.image} width="63px" height="63px" borderRadius="50%" multiPicture={contacts.length > 1} position={position} left={left} />
               :
               (<img
@@ -84,7 +79,9 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
         </div>
 
       </div>
-      <p id="contact-name"> {contactName || "Group Name"}  <img src={moreArrowImage} alt="more-arrow" height="12px" width="12px" /> </p>
+      
+      <p id="contact-name"> {contactsLengthGreaterThanOne ? contactName : contacts[0].name }  <img src={moreArrowImage} alt="more-arrow" height="12px" width="12px" /> </p>
+      
 
       <div id="chat">
         {messages?.map((bubble, index) => {
