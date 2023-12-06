@@ -119,9 +119,18 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
             }
           }
 
+          const removePfpForImages = () => {
+            if (index >= 1 && contactsLengthGreaterThanOne && index <= messages.length - 2) {
+              if (messages[index]?.contactId === messages[index + 1]?.contactId) {
+                return true
+              } else {
+                return false
+              }
+            }
+          }
+
           const contactIdExists = bubble.contactId != null
 
-          // TODO: check if contact name eis twice in a row for 
           if (bubble.image) {
             if (bubble.sender) {
               return <div key={bubble.id} className="right"><ImageCrop file={bubble.image} width="30%" height="30%" borderRadius="20%" /></div>
@@ -130,10 +139,10 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
                 return (
                   <div className="messageContainer">
                     <div className="messagePfp">
-                      {contactIdExists && <ImageCrop file={contacts[bubble.contactId || 0].image} width="38px" height="38px" borderRadius="100%" />}
+                      {contactIdExists && <ImageCrop file={contacts[bubble.contactId || 0].image} width="38px" height="38px" borderRadius="100%" visibility={removePfpForImages() ? "hidden" : "visible"}/>}
                     </div>
                     <div className="context">
-                      {contactIdExists && <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p>}
+                      {contactIdExists &&  !removeName() && <p className="contactsName"> {contacts[bubble.contactId || 0].name} </p>}
                       <div key={bubble.id} className="left"><ImageCrop file={bubble.image} width="30%" height="30%" borderRadius="20%" /></div>
                     </div>
                   </div>
@@ -177,8 +186,6 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
               )
             }
           }
-
-          // end of bubble.text
 
           if (bubble.date) {
             return (<h6 key={bubble.id} className="time-divider">{bubble.date}</h6>)

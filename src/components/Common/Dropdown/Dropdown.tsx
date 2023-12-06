@@ -44,7 +44,6 @@ const CustomDropdown: React.FC<DropdownProps> = ({ label, options, id, menuItemH
         }}
       >
         {options?.map((option) => <MenuItem onClick={() => {
-          console.log(`option: `, option);
           handleClose();
           menuItemHandler(option.id)
         }}>{option.name}</MenuItem>)}

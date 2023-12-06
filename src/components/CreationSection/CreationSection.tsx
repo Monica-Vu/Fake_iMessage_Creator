@@ -110,7 +110,6 @@ const CreationSection = () => {
       // ...(contactId && { contactId: contacts[contactId].id })
       // ...(contactId && { contactId })
     }
-    console.log("Creating new message", newMessage);
 
     setMessages([
       ...messages || [],
