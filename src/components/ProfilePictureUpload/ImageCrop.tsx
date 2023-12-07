@@ -29,18 +29,17 @@ function ImageCrop({ file, width, height, borderRadius, multiPicture, index, pos
     height: height || "100%",
     borderRadius: borderRadius || "0%",
     position: position || "absolute",
-    // top: top + "px" || 0,
     top: top ? top + "px" : 0,
     left: left ? left + "px" : 0,
   }
 
   return file ? (
-   
+  
       <img
         src={URL.createObjectURL(file)}
         style={multiPicture? multiPictureStyle : imageStyle}
       />
-  ) : <div> </div>
+  ) : <> </>
 }
 
 export default ImageCrop;

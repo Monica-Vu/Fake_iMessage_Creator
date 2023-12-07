@@ -9,6 +9,13 @@
     padding: 5px;
 }
 
+
+.text {
+    font-size: 12px;
+    text-align: left;
+    padding: 0 0 2px 5px;
+}
+
 .left-item {
     text-align: left;
 }

@@ -53,7 +53,7 @@ const EditList: React.FC = ({ }) => {
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}>
                                             <div className="list-item">
-                                                <b>{contacts[message.contactId || 0].name}</b>
+                                                <b>{message.sender? "You" : contacts[message.contactId || 0].name}</b>
                                                 <br />
                                                 {message.text}
                                                 {message.image && <ImageCrop file={message.image} width="20%" height="20%" />}

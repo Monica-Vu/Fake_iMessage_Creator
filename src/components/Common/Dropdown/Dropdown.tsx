@@ -24,7 +24,7 @@ const CustomDropdown: React.FC<DropdownProps> = ({ label, options, id, menuItemH
   };
 
   return (
-    <div>
+    <>
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -48,7 +48,7 @@ const CustomDropdown: React.FC<DropdownProps> = ({ label, options, id, menuItemH
           menuItemHandler(option.id)
         }}>{option.name}</MenuItem>)}
       </Menu>
-    </div>
+    </>
   );
 }
 
