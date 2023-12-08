@@ -20,12 +20,13 @@ const CaptureElementAsImage: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
       <Chat chatRef={elementRef} />
       <Button 
         text="Capture"
-        onClick={handleCaptureClick}/>
-    </div>
+        onClick={handleCaptureClick}
+        alignSelf="flex-end" />
+    </>
   );
 };
 

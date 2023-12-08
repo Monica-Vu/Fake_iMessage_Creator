@@ -1,3 +1,18 @@
+.list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-height: 790px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+}
+
 .list-item {
   background-color: #e5e4e9;
   margin-bottom: 5px;

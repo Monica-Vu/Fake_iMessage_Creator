@@ -4,10 +4,12 @@ import MessagesContext, { MessagesType, type Message } from "../../context/Messa
 import ImageCrop from "../ProfilePictureUpload/ImageCrop";
 import Button from "../Common/Button/Button";
 import "./EditList.css"
+import ContactsContext, { ContactType } from "../../context/Contacts/ContactsContext";
 
 const EditList: React.FC = ({ }) => {
     const { messages, setMessages, setIsEditing } = React.useContext(MessagesContext) as MessagesType;
     const [tempMessages, setTempMessages] = useState(messages);
+    const { contacts } = React.useContext(ContactsContext) as ContactType
 
     const handleUpdateList = () => {
         setMessages(tempMessages);
@@ -35,7 +37,7 @@ const EditList: React.FC = ({ }) => {
     }
 
     return (
-        <div>
+        <div className="list">
             <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="messages">
                     {(provided) => (
@@ -51,6 +53,8 @@ const EditList: React.FC = ({ }) => {
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}>
                                             <div className="list-item">
+                                                <b>{message.sender? "You" : contacts[message.contactId || 0].name}</b>
+                                                <br />
                                                 {message.text}
                                                 {message.image && <ImageCrop file={message.image} width="20%" height="20%" />}
                                                 {message.date}
@@ -64,8 +68,10 @@ const EditList: React.FC = ({ }) => {
                         </div>)}
                 </Droppable>
             </DragDropContext >
-            <Button text="Update" onClick={handleUpdateList} />
-            <Button text="Cancel" onClick={handleCancelEditList} />
+            <div className="controls">
+                <Button text="Update" onClick={handleUpdateList} />
+                <Button text="Cancel" onClick={handleCancelEditList} />
+            </div>
         </div>
     )
 }

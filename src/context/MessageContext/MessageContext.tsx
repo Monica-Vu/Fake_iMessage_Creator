@@ -6,6 +6,7 @@ export type Message = {
     text?: string,
     image?: File,
     date?: string
+    contactId?: number
 }
 
 export type MessagesType = {
