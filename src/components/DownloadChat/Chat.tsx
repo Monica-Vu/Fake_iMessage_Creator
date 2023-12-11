@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import SpeechBubble from "../Common/Speech_Bubble/SpeechBubble";
 import "./Chat.css";
 import ProfilePictureContext, {
@@ -34,6 +34,17 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
   const { contacts } = React.useContext(ContactsContext) as ContactType
   const { time } = React.useContext(TimeContext) as TimeType;
   const contactsLengthGreaterThanOne = contacts.length > 1;
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messages?.length) {
+      chatEndRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      })
+    }
+  }, [messages?.length]);
+
 
   if (isEditing) {
     return <EditList />
@@ -43,7 +54,6 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
     transform: `translate(-${(((contacts.length - 1) * 30 + (63 / 2)) / 3) + (contacts.length * 0.70)}px, 0)`
   }
 
-  console.log("contactsLengthGreaterThanOne =>", contactsLengthGreaterThanOne)
   return (
     <div className="capture-element" ref={chatRef}>
       <div id="header-container">
@@ -189,6 +199,7 @@ const Chat: React.FC<ChatProps> = ({ chatRef }) => {
           }
         })}
 
+        <div ref={chatEndRef} /> 
       </div>
       <div id="footer">
         <img src={CameraImage} />
